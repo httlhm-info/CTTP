@@ -1,120 +1,114 @@
 <!DOCTYPE html>
-<html lang="vi" style="--primary-color: #036668;"><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; pointer-events: none; --rem: 16;"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; pointer-events: none; --rem: 16;"></grammarly-extension><head><style data-merge-styles="true"></style>
+<html lang="vi"><head><style data-merge-styles="true"></style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chương Trình Thờ Phượng - HTTL Hòa Mỹ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&amp;family=Roboto:ital,wght@0,400;0,500;0,700;0,800;1,400&amp;display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #c5a880;
-            --text-color: #2d3748;
-            --bg-color: #f7fafc;
+            --primary-color: #1a73e8; /* Google Blue */
+            --secondary-color: #ea4335; /* Google Red */
+            --text-color: #202124; /* Google Dark Text */
+            --bg-color: #f8f9fa; /* Google Light Gray Background */
             --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --accent-bg: #fdfbf7;
+            --border-color: #dadce0; /* Google Border */
+            --accent-bg: #e8f0fe; /* Google Light Blue Accent */
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             color: var(--text-color);
             background-color: var(--bg-color);
             line-height: 1.6;
             padding-bottom: 70px;
+            font-size: 14.4px;
         }
         .mobile-container {
             max-width: 480px; margin: 0 auto; background-color: var(--card-bg);
             min-height: 100vh; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        .nav-tabs {
-            display: flex; overflow-x: auto; position: sticky; top: 0;
-            background-color: var(--primary-color); z-index: 100; scrollbar-width: none;
-        }
-        .nav-tabs::-webkit-scrollbar { display: none; }
-        .nav-tab {
-            flex: 0 0 auto; padding: 14px 16px; color: #e2e8f0; text-decoration: none;
-            font-size: 18px; font-weight: 500; border-bottom: 3px solid transparent; white-space: nowrap;
-        }
-        .nav-tab.active {
-            color: #ffffff; border-bottom-color: var(--secondary-color); background-color: rgba(255,255,255,0.05);
-        }
         .page-section { display: none; padding: 20px 16px; animation: fadeIn 0.3s ease; }
         .page-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .header-main { text-align: center; padding: 24px 0; border-bottom: 2px double var(--secondary-color); margin-bottom: 20px; }
-        .church-title { font-size: 16.9px; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-color); font-weight: 700; }
-        .church-subtitle { font-size: 23.4px; font-weight: 800; color: var(--primary-color); margin: 2px 0; }
-        .church-address { font-size: 15.6px; color: #718096; margin-bottom: 8px; }
+        .header-main { text-align: center; padding: 24px 0; border-bottom: 2px double var(--border-color); margin-bottom: 20px; }
+        .church-title { font-size: 15.2px; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-color); font-weight: 700; }
+        .church-subtitle { font-family: 'Oswald', sans-serif; font-size: 21.1px; font-weight: 700; color: var(--primary-color); margin: 2px 0; letter-spacing: 0.5px; }
+        .church-address { font-size: 14px; color: #5f6368; margin-bottom: 8px; }
 
-        h1.title { font-size: 23.4px; color: var(--primary-color); margin: 12px 0 4px 0; font-weight: 800; }
-        .subtitle { font-size: 16.9px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        h1.title { font-family: 'Oswald', sans-serif; font-size: 21.1px; color: var(--primary-color); margin: 12px 0 4px 0; font-weight: 700; letter-spacing: 0.5px; }
+        .subtitle { font-size: 15.2px; color: #5f6368; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
         .theme-box {
-            background-color: var(--accent-bg); border: 1px solid var(--secondary-color); border-radius: 6px;
+            background-color: var(--accent-bg); border: 1px solid var(--primary-color); border-radius: 8px;
             padding: 14px; text-align: center; margin: 16px 0;
         }
-        .theme-title { font-size: 16.9px; color: #744210; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; }
-        .theme-name { font-size: 28.6px; color: var(--primary-color); font-weight: 800; margin: 6px 0; }
+        .theme-title { font-size: 15.2px; color: var(--primary-color); text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; }
+        .theme-name { font-family: 'Oswald', sans-serif; font-size: 25.7px; color: var(--secondary-color); font-weight: 700; margin: 6px 0; letter-spacing: 0.5px; }
 
-        .meta-info { font-size: 18.2px; margin-bottom: 5px; }
-        .meta-line { margin-bottom: 6px; font-size: 18.2px; }
-        .meta-label { font-weight: 600; color: #4a5568; }
+        .meta-info { font-size: 16.4px; margin-bottom: 5px; }
+        .meta-line { margin-bottom: 6px; font-size: 16.4px; }
+        .meta-label { font-weight: 600; color: #5f6368; }
 
         h2.section-title {
-            font-size: 19.5px; color: #ffffff; background-color: var(--primary-color);
-            padding: 8px 12px; border-radius: 4px; margin: 20px 0 12px 0;
-            text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 17.6px; color: #ffffff; background-color: var(--primary-color);
+            padding: 8px 12px; border-radius: 6px; margin: 20px 0 12px 0;
+            text-transform: uppercase; font-weight: 600; letter-spacing: 0.8px;
         }
 
         .liturgy-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .liturgy-row { border-bottom: 1px solid var(--border-color); }
-        .liturgy-cell { padding: 12px 4px; vertical-align: top; font-size: 18.2px; }
-        .liturgy-no { width: 24px; font-weight: bold; color: var(--secondary-color); }
+        .liturgy-row:hover { background-color: #f8f9fa; }
+        .liturgy-cell { padding: 12px 4px; vertical-align: top; font-size: 16.4px; }
+        .liturgy-no { width: 24px; font-weight: bold; color: var(--primary-color); }
         .liturgy-content { font-weight: 500; }
-        .liturgy-detail { font-size: 15.6px; color: #4a5568; margin-top: 3px; font-style: italic; }
-        .liturgy-lead { text-align: right; font-size: 16.9px; color: #4a5568; width: 120px; font-weight: 500; }
+        .liturgy-detail { font-size: 14px; color: #5f6368; margin-top: 3px; font-style: italic; }
+        .liturgy-lead { text-align: right; font-size: 15.2px; color: #5f6368; width: 120px; font-weight: 500; }
 
         .scripture-box {
-            font-family: "Georgia", serif; font-style: italic; background-color: #f7fafc;
-            border-left: 3px solid var(--secondary-color); padding: 14px; margin: 15px 0;
-            font-size: 18.9px; line-height: 1.7;
+            font-family: "Georgia", serif; font-style: italic; background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color); padding: 14px; margin: 15px 0;
+            font-size: 17px; line-height: 1.7; border-radius: 0 8px 8px 0;
         }
         .scripture-ref { font-weight: bold; font-style: normal; display: block; margin-bottom: 6px; color: var(--primary-color); }
 
         .caugoc-box {
-            font-family: "Georgia", serif; background-color: var(--accent-bg);
-            border: 1px dashed var(--secondary-color); border-radius: 6px;
-            padding: 14px; margin: 15px 0; font-size: 18.2px; line-height: 1.7; text-align: center;
+            font-family: "Georgia", serif; background-color: #ffeeee;
+            border: 1px dashed var(--secondary-color); border-radius: 8px;
+            padding: 14px; margin: 15px 0; font-size: 16.4px; line-height: 1.7; text-align: center;
         }
-        .caugoc-title { font-size: 16.9px; color: #744210; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 6px; display: block; }
+        .caugoc-title { font-size: 15.2px; color: var(--secondary-color); text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 6px; display: block; }
 
         .item-list { list-style: none; }
-        .item-list > li { position: relative; padding-left: 16px; margin-bottom: 10px; font-size: 18.9px; text-align: justify; }
-        .item-list > li::before { content: "•"; position: absolute; left: 2px; color: var(--secondary-color); font-weight: bold; font-size: 20.8px; }
+        .item-list > li { position: relative; padding-left: 16px; margin-bottom: 10px; font-size: 17px; text-align: justify; }
+        .item-list > li::before { content: "•"; position: absolute; left: 2px; color: var(--primary-color); font-weight: bold; font-size: 18.7px; }
 
         .sub-list { list-style: none; margin-left: 5px; margin-top: 6px; border-left: 1px dashed var(--border-color); padding-left: 10px; }
-        .sub-list li { font-size: 17.6px; color: #2d3748; margin-bottom: 6px; line-height: 1.5; text-align: justify; }
+        .sub-list li { font-size: 15.8px; color: var(--text-color); margin-bottom: 6px; line-height: 1.5; text-align: justify; }
 
-        .card { border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; margin-bottom: 14px; background-color: #fff; }
+        .card { border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; margin-bottom: 14px; background-color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
         .info-block { margin-bottom: 15px; }
         .info-block:last-child { margin-bottom: 0; }
-        .info-title { font-weight: bold; font-size: 18.9px; color: var(--primary-color); margin-bottom: 6px; }
-        .info-text { font-size: 18.2px; color: #2d3748; padding-left: 8px; font-weight: 500; }
+        .info-title { font-weight: bold; font-size: 17px; color: var(--primary-color); margin-bottom: 6px; }
+        .info-text { font-size: 16.4px; color: var(--text-color); padding-left: 8px; font-weight: 500; }
 
         .footer-nav {
             position: fixed; bottom: 0; left: 0; right: 0; background-color: #ffffff;
             border-top: 1px solid var(--border-color); display: flex; justify-content: space-around;
             max-width: 480px; margin: 0 auto; z-index: 100; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
         }
-        .footer-btn { flex: 1; text-align: center; padding: 10px 0; font-size: 14.3px; color: #718096; text-decoration: none; font-weight: 500; }
+        .footer-btn { flex: 1; text-align: center; padding: 10px 0; font-size: 12.9px; color: #5f6368; text-decoration: none; font-weight: 500; }
         .footer-btn.active { color: var(--primary-color); font-weight: bold; }
-        .footer-btn-icon { font-size: 23.4px; display: block; margin-bottom: 2px; }
+        .footer-btn-icon { font-size: 21.1px; display: block; margin-bottom: 2px; }
 
         .doc-id-bottom {
-            text-align: center; font-size: 15.6px; color: #a0aec0; font-weight: bold;
+            text-align: center; font-size: 14px; color: #70757a; font-weight: bold;
             margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border-color);
         }
-        .loading-msg { text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 16px; }
+        .loading-msg { text-align: center; padding: 40px 20px; color: #70757a; font-size: 14.4px; }
 
         .edit-toolbar {
             position: fixed;
@@ -129,15 +123,15 @@
             padding: 10px 16px;
             border: none;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 11.7px;
             font-weight: 700;
             box-shadow: 0 2px 8px rgba(0,0,0,0.25);
             cursor: pointer;
             white-space: nowrap;
         }
         #editBtn { background-color: var(--primary-color); color: #fff; }
-        #editBtn.editing { background-color: #e53e3e; }
-        #saveBtn { background-color: var(--secondary-color); color: #1a365d; }
+        #editBtn.editing { background-color: var(--secondary-color); }
+        #saveBtn { background-color: #34a853; color: #fff; } /* Google Green */
 
         .format-toolbar {
             position: fixed;
@@ -145,11 +139,11 @@
             left: 0;
             right: 0;
             z-index: 250;
-            background-color: #2d3748;
-            padding: 8px 10px;
+            background-color: #202124; /* Google Dark Gray */
+            padding: 5px 8px;
             display: none;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 5px;
             align-items: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
@@ -157,32 +151,32 @@
         .format-toolbar button {
             border: none;
             border-radius: 4px;
-            padding: 6px 10px;
-            font-size: 14px;
+            padding: 4px 7px;
+            font-size: 10.5px;
             font-weight: 700;
             cursor: pointer;
-            background-color: #4a5568;
+            background-color: #3c4043;
             color: #fff;
         }
         .format-toolbar button.italic-btn { font-style: italic; }
         .format-toolbar label {
-            font-size: 11px;
-            color: #cbd5e0;
+            font-size: 8.5px;
+            color: #bdc1c6;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
         .format-toolbar input[type="color"] {
-            width: 28px;
-            height: 28px;
+            width: 20px;
+            height: 20px;
             border: none;
             border-radius: 4px;
             padding: 0;
             cursor: pointer;
         }
         .format-toolbar select {
-            font-size: 12px;
-            padding: 4px;
+            font-size: 9px;
+            padding: 2px;
             border-radius: 4px;
             border: none;
         }
@@ -192,24 +186,60 @@
             outline-offset: 4px;
         }
         .page-section[contenteditable="true"] *:hover {
-            background-color: #fffbea;
+            background-color: #e8f0fe;
             cursor: text;
         }
-        body.editing-mode .nav-tabs { top: 46px; }
+        body.editing-mode { padding-top: 36px; }
+
+        .clone-tools {
+            display: none;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--border-color);
+        }
+        body.editing-mode .clone-tools { display: flex; }
+        .clone-tools button {
+            flex: 1;
+            min-width: 140px;
+            padding: 10px 8px;
+            border: 2px dashed var(--primary-color);
+            border-radius: 8px;
+            background-color: var(--accent-bg);
+            color: var(--primary-color);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .week-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 4px 0 16px;
+        }
+        .week-nav button {
+            flex: 1;
+            min-width: 70px;
+            padding: 8px 4px;
+            border: 1px solid var(--primary-color);
+            border-radius: 6px;
+            background-color: var(--accent-bg);
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .week-nav button:hover { background-color: var(--primary-color); color: #fff; }
+        #page5 .card[id^="cn-thu"] { scroll-margin-top: 20px; }
     </style>
 <style></style></head>
-<body data-new-gr-c-s-check-loaded="14.1138.0" data-gr-ext-installed="" class="" data-new-gr-c-s-loaded="14.1138.0" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;">
+<body data-new-gr-c-s-check-loaded="14.1138.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1138.0">
 
 <div class="mobile-container">
-    <div class="nav-tabs" id="topNav">
-        <a href="#" class="nav-tab active" onclick="switchPage(0)">Trang Chủ</a>
-        <a href="#" class="nav-tab" onclick="switchPage(1)">Chương Trình</a>
-        <a href="#" class="nav-tab" onclick="switchPage(2)">Thông Báo</a>
-        <a href="#" class="nav-tab" onclick="switchPage(3)">Chi phái và Ban</a>
-        <a href="#" class="nav-tab" onclick="switchPage(4)">Cảm tạ &amp; Cầu thay</a>
-    </div>
 
-    <!-- PAGE 0: TRANG CHỦ - render từ chuongtrinh.csv (Loai=ThongTin) -->
+    <!-- PAGE 0: TRANG CHỦ -->
     <div class="page-section active" id="page0">
         <div id="page0-content">
             <div class="header-main">
@@ -223,7 +253,7 @@
             <div class="theme-box">
                 <div class="theme-title">Chủ đề</div>
                 <div class="theme-name">ĐƯỢC VÀ MẤT</div>
-                <div class="meta-line" style="font-style: italic; font-size: 18.2px; color: #4a5568;">Kinh Thánh: Mathiơ 16:26</div>
+                <div class="meta-line" style="font-style: italic; font-size: 16.4px; color: #5f6368;">Kinh Thánh: Mathiơ 16:26</div>
             </div>
 
             <div class="card">
@@ -240,14 +270,14 @@
 
             <div class="caugoc-box">
                 <span class="caugoc-title">Câu Gốc</span>
-                "Hãy tìm kiếm nước Đức Chúa Trời trước hết, rồi mọi điều cần thiết sẽ được ban thêm cho."
+                "TBD"
             </div>
 
             <div class="doc-id-bottom">Bản chương trình số: 30</div>
         </div>
     </div>
 
-    <!-- PAGE 1: CHƯƠNG TRÌNH - render từ chuongtrinh.csv (Loai=TietMuc) -->
+    <!-- PAGE 1: CHƯƠNG TRÌNH -->
     <div class="page-section" id="page1">
         <h2 class="section-title">Chương Trình Thờ Phượng</h2>
         <table class="liturgy-table" id="liturgy-table-body">
@@ -355,20 +385,20 @@
             </tbody></table>
     </div>
 
-    <!-- PAGE 2: THÔNG BÁO - render từ thongtin.csv (Trang=ThongBao) -->
-    <div class="page-section" id="page2" spellcheck="false">
+    <!-- PAGE 2: THÔNG BÁO -->
+    <div class="page-section" id="page2">
         <div id="page2-content" class="loading-msg">
                     <h2 class="section-title">Thông Báo Truyền Giảng</h2>
-                    <div class="theme-box" style="background-color: #fffaf0; border-color: #ed8936;">
-                        <div class="theme-title" style="color: #dd6b20;">CHƯƠNG TRÌNH TRUYỀN GIẢNG THÁNG 7/2026</div>
-                        <div class="theme-name" style="font-size: 24.7px;">ĐƯỢC VÀ MẤT</div>
-                        <div style="font-size: 18.9px; text-align: left; margin-top: 10px; line-height: 1.6;">
+                    <div class="theme-box" style="background-color: #fef7e0; border-color: #fbbc05;"> <!-- Google Yellow Theme -->
+                        <div class="theme-title" style="color: #b06000;">CHƯƠNG TRÌNH TRUYỀN GIẢNG THÁNG 7/2026</div>
+                        <div class="theme-name" style="font-size: 22.2px; color: var(--secondary-color);">ĐƯỢC VÀ MẤT</div>
+                        <div style="font-size: 17px; text-align: left; margin-top: 10px; line-height: 1.6;">
                             <p><strong>• Thời gian:</strong> 19h30, Chúa nhật 19/07/2026</p>
                             <p><strong>• Kinh Thánh:</strong> Mathiơ 16:26</p>
                             <p><strong>• Diễn giả:</strong> Mục sư Ông Văn Tín</p>
                             <p><strong>• HDCT:</strong> Chấp sự Huỳnh Chí Nhật</p>
                         </div>
-                        <p style="font-size: 17.6px; margin-top: 10px; font-style: italic; color: #4a5568; font-weight: 500;">
+                        <p style="font-size: 15.8px; margin-top: 10px; font-style: italic; color: #5f6368; font-weight: 500;">
                             Xin con dân Chúa thêm lời cầu nguyện, chứng đạo mời thân hữu.
                         </p>
                     </div>
@@ -404,45 +434,46 @@
                         </div>
                     </div>
                 </div>
+        
     </div>
 
-    <!-- PAGE 3: CHI PHÁI VÀ BAN - render từ thongtin.csv (Trang=ChiPhaiBan) -->
-    <div class="page-section" id="page3" spellcheck="false">
+    <!-- PAGE 3: CHI PHÁI VÀ BAN -->
+    <div class="page-section" id="page3">
         <div id="page3-content" class="loading-msg">
                     <h2 class="section-title">Sinh Hoạt Các Chi Phái</h2>
                     <div class="card">
-                        <p style="font-size: 17.6px; font-style: italic; color: #4a5568; margin-bottom: 10px; font-weight: 500;">(Kính mời quý con dân Chúa sinh hoạt ban ngành chi phái lúc 19g30 thứ Ba)</p>
-                        <table style="width: 100%; font-size: 18.2px; border-collapse: collapse; line-height: 1.8;">
+                        <p style="font-size: 15.8px; font-style: italic; color: #5f6368; margin-bottom: 10px; font-weight: 500;">(Kính mời quý con dân Chúa cầu nguyện tại chi phái lúc 19g30 thứ Ba)</p>
+                        <table style="width: 100%; font-size: 16.4px; border-collapse: collapse; line-height: 1.8;">
                     <tbody><tr>
                         <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP1:</strong> ÔB Nguyễn Hữu Linh Tuyền</td>
                     </tr>
                 
                     <tr>
-                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP2: ÔB Nguyễn Ngọc Hùng</td>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP2:</strong> ÔB Nguyễn Ngọc Hùng</td>
                     </tr>
                 
                     <tr>
-                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP3: ÔB Lê Xuân Hoàng Vũ</td>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP3:</strong> ÔB Lê Xuân Hoàng Vũ</td>
                     </tr>
                 
                     <tr>
-                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP4: ÔB Trần Đăng Thịnh</td>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP4:</strong> ÔB Trần Đăng Thịnh</td>
                     </tr>
                 
                     <tr>
-                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP5: Cô Lê Thị Hiển</td>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP5:</strong> Cô Lê Thị Hiển</td>
                     </tr>
                 
                     <tr>
-                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP6: ÔB Đoàn Đức Giang</td>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP6:</strong> ÔB Đoàn Đức Giang</td>
                     </tr>
                 
                     <tr>
-                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP7: QP. Lê Đức Nghĩa</td>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP7:</strong> QP. Lê Đức Nghĩa</td>
                     </tr>
                 
                     <tr>
-                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP8: ÔB Ông Văn Thanh Hồi</td>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP8:</strong> ÔB Ông Văn Thanh Hồi</td>
                     </tr>
                 </tbody></table>
                     </div>
@@ -456,28 +487,27 @@
                     <div class="card">
                         <div class="info-title" style="border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin-bottom: 8px;">CÁC BAN</div>
                         <ul class="item-list"><li><strong>08g00 Chúa nhật:</strong> Ban Thiếu nhi ấu</li><li><strong>14g30 Chúa Nhật:</strong> Ban Thiếu niên, Ban Thiếu nhi</li><li><strong>19g15 thứ Tư:</strong> Ban Thanh niên</li><li><strong>19g30 thứ Bảy tuần 2 và 4:</strong> Ban Thanh tráng</li><li><strong>19g30 thứ Bảy tuần 2 và 4 :</strong> Ban Tráng niên</li><li><strong>14g30 Chúa Nhật tuần thứ 2:</strong> Ban Phụ nữ</li><li><strong>19g30 Chúa Nhật tuần thứ 4:</strong> Ban Trung niên</li><li><strong>14g30 Chúa Nhật tuần thứ 4:</strong> Ban Cao niên</li></ul>
-                        <p style="font-size: 14.3px; color: #718096; margin-top: 10px; font-style: italic; border-top: 1px solid var(--border-color); padding-top: 6px;">Xin lưu ý trên đây là chương trình thường kỳ, các thay đổi đột xuất (nếu có) sẽ được thông báo chính thức trên tờ chương trình hàng tuần.</p>
+                        <p style="font-size: 12.9px; color: #70757a; margin-top: 10px; font-style: italic; border-top: 1px solid var(--border-color); padding-top: 6px;">Xin lưu ý trên đây là chương trình thường kỳ, các thay đổi đột xuất (nếu có) sẽ được thông báo chính thức trên tờ chương trình hàng tuần.</p>
                     </div>
                 </div>
     </div>
 
-    <!-- PAGE 4: CẢM TẠ & CẦU THAY - Cảm Tạ (CSV) + Cầu Thay (tĩnh, cố định) + Cầu Nguyện Đặc Biệt (3 mục đầu tĩnh + CSV) -->
+    <!-- PAGE 4: CẢM TẠ & CẦU THAY -->
     <div class="page-section" id="page4">
         <h2 class="section-title">Cảm Tạ</h2>
-        <div class="card" style="border-left: 4px solid #48bb78; background-color: #f6fedb;">
-            <ul class="item-list" id="camta-list"><li>Hội Thánh được bình an, phước hạnh.</li><li>Gia đình ÔB. Phạm Văn Ánh (CP2) cùng Hội Thánh đã cầu nguyện dâng lên Chúa việc xây dựng nhà lúc 6h00 thứ hai, 06.7.2026.</li><li>Gia đình Ô. Huỳnh Văn Tảo (CP3) cùng Hội Thánh đã cầu nguyện dâng lên Chúa việc xây dựng nhà lúc 6h00 thứ năm, 09.7.2026.</li></ul>
+        <div class="card" style="border-left: 4px solid #34a853; background-color: #e6f4ea;"> <!-- Google Green Theme -->
+            <ul class="item-list" id="camta-list"><li>Hội Thánh được bình an, phước hạnh.</li><li>Gia đình ÔB. Phạm Văn Ánh (CP2) cùng Hội Thánh đã cầu nguyện dâng lên Chúa việc xây dựng nhà lúc 6h00 thứ hai, 06.7.2026.</li><li>Gia đình Ô. Huỳnh Văn Tảo (CP3) cùng Hội Thánh đã cầu nguyện dâng lên Chúa việc xây dựng nhà lúc 6h00 thứ năm, 09.7.2026.</li><li>Gia đình Ô. Huỳnh Văn Tảo (CP3) cùng Hội Thánh đã cầu nguyện dâng lên Chúa việc xây dựng nhà lúc 6h00 thứ năm, 09.7.2026.</li></ul>
         </div>
 
         <h2 class="section-title">Cầu Thay</h2>
         <div class="card">
-            <!-- CỐ ĐỊNH: mục này không đổi hàng tuần. Khi cần điều chỉnh, sửa trực tiếp tại đây. -->
             <ul class="item-list">
                 <li><strong>1.</strong> Đức Thánh Linh thăm viếng và phấn hưng Hội Thánh, khiến Hội Thánh làm vinh hiển Đức Chúa Trời, phát triển mạnh mẽ cả chiều rộng lẫn chiều sâu.</li>
                 <li><strong>2.</strong> Mục sư Quản nhiệm và Bà được đầy ơn Chúa để hầu việc Chúa với Hội Thánh cũng như công tác được giao của Ban Đại diện. Gia đình tôi tớ Chúa được bình an, phước hạnh.</li>
                 <li><strong>3.</strong> Ban Chấp sự, Ban Điều hành các Chí phái, các Ban ngành, các nhân sự trong Hội Thánh đầy ơn Chúa, chu toàn công tác được giao cách kết quả và phước hạnh.</li>
                 <li><strong>4.</strong> Các tân tín hữu đứng vững và tăng trưởng trong đức tin, trung tín sinh hoạt với Hội Thánh, tham gia lớp giáo lý để nhận báp-têm và làm chứng về Chúa cho những người khác.</li>
                 <li><strong>5. Cầu Nguyện cho các tín hữu cao tuổi:</strong><br>
-                    <span style="font-size:17.6px; color:#4a5568; display:block; margin:2px 0 6px 0;">Những tín hữu cao tuổi được bình an, mạnh khoẻ, trung tín, làm gương cho con cháu trong đời sống đức tin.</span>
+                    <span style="font-size:15.8px; color:#5f6368; display:block; margin:2px 0 6px 0;">Những tín hữu cao tuổi được bình an, mạnh khoẻ, trung tín, làm gương cho con cháu trong đời sống đức tin.</span>
                     <ul class="sub-list">
                         <li><strong>Chi Phái 1:</strong> ông bà Mục sư Trí sự Nguyễn Thanh Lâm, cụ bà Nguyễn Thị Phượng, cụ bà Ngô Thị Lợi, cụ bà Đỗ Thị Thử, bà Nguyễn Thị Tranh, bà Nguyễn Thị Liên, ông bà Đỗ Viết Khuyến.</li>
                         <li><strong>Chi Phái 2:</strong> quả phụ Lê Xuân Quý, ông bà Trần Văn Diễn, ông bà Vũ Ngọc Hùng, cụ Đoàn Giàu, cụ bà Nguyễn Thị Phú, ông bà Nguyễn Năng Sùng, ông Châu Tập.</li>
@@ -491,7 +521,7 @@
                     </ul>
                 </li>
                 <li><strong>6. Cầu Nguyện cho các thai phụ trong Hội Thánh:</strong><br>
-                    <span style="font-size:17.6px; color:#4a5568; display:block; margin:2px 0 6px 0;">Được bình an, phước hạnh trong thai kỳ, am hiểu và thực hành thai giáo.</span>
+                    <span style="font-size:15.8px; color:#5f6368; display:block; margin:2px 0 6px 0;">Được bình an, phước hạnh trong thai kỳ, am hiểu và thực hành thai giáo.</span>
                     <ul class="sub-list">
                         <li>• Cô Diệp Hoàng Uyên Phương (Chi Phái 1)</li>
                         <li>• Cô Tán Ngọc Thúy Phượng (Chi Phái 4)</li>
@@ -503,7 +533,7 @@
                     </ul>
                 </li>
                 <li><strong>7. Cầu Nguyện cho các cháu nhỏ có nan đề về sức khỏe:</strong><br>
-                    <span style="font-size:17.6px; color:#4a5568; display:block; margin:2px 0 6px 0;">Xin cầu thay cho các cháu bình an, sức khỏe cải thiện, cha mẹ các cháu được Chúa thêm ơn để chăm sóc các cháu:</span>
+                    <span style="font-size:15.8px; color:#5f6368; display:block; margin:2px 0 6px 0;">Xin cầu thay cho các cháu bình an, sức khỏe cải thiện, cha mẹ các cháu được Chúa thêm ơn để chăm sóc các cháu:</span>
                     <ul class="sub-list">
                         <li>• Cháu Đình Minh Triết (Chi phái 1)</li>
                         <li>• Cháu Đoàn Văn Thiên Phước (Chi Phái 5)</li>
@@ -516,19 +546,95 @@
         </div>
 
         <h2 class="section-title">Cầu Nguyện Đặc Biệt</h2>
-        <div class="card" style="border-left: 4px solid #e53e3e;">
+        <div class="card" style="border-left: 4px solid #ea4335; background-color: #fce8e6;"> <!-- Google Red Theme -->
             <ul class="item-list" id="caunguyendacbiet-list">
-                <!-- CỐ ĐỊNH: 3 mục đầu không đổi hàng tuần. Khi cần điều chỉnh, sửa trực tiếp tại đây. -->
                 <li><strong>1. Mở Điểm nhóm:</strong> Xin Chúa ban ơn, hướng dẫn Hội Thánh trong việc mở các điểm nhóm mới. Cầu nguyện xin Chúa chọn địa điểm, thêm ơn trên công tác nhân sự, chuẩn bị tài lực.</li>
                 <li><strong>2. Mở rộng cơ sở nhà Chúa:</strong> Hội Thánh sớm mua được phần đất liền kề nhà thờ để mở rộng cơ sở nhà Chúa, nhằm đáp ứng nhu cầu sinh hoạt của Hội Thánh.</li>
                 <li><strong>3. Trường Chúa Nhật:</strong> Xin Chúa cho Trường Chúa Nhật có 200 học viên tham gia học thường xuyên.</li>
-                <!-- Các mục 4-7 dưới đây được chèn tự động từ thongtin.csv -->
                 
-            <li><strong>4. Cầu thay cho các tôi con Chúa có nhu cầu sức khỏe:</strong> <ul class="sub-list"><li>• Chấp sự Nguyễn Thị Hồng Liên đang điều trị tại nhà, xin Chúa cho sớm hồi phục hoàn toàn.</li><li>• Bà Trương Thị Ngọc Chánh (CP2) đang điều trị tại BV Ung bướu.</li><li>• Ông Thân Đăng Tấn (CP5) đang điều trị tại viện BV Ung bướu.</li><li>• QPMS Phan Phụng Phục đau tim mạch.</li><li>• Ông cụ Châu Tập (CP2) bị tai biến, đang điều trị tại nhà.</li><li>• Ông Trần Công Vũ (CP2) bị tai biến, đang điều trị tại nhà.</li><li>• Ô. Nguyễn Hữu Ân (CP4) mổ mắt glucose, hiện đang bắn laser.</li><li>• Cô Phan Thị Thanh Xuân (CP5) đã được phẫu thuật viêm xoang, hiện còn đang điều trị.</li><li>• Bà Ngô Thị Thêm bị đau tim, điều trị ở bệnh viện Hoàn Mỹ.</li><li>• Chúa ban cho các gia đình hiếm muộn sớm có con cái.</li></ul></li><li><strong>5. BAN THIẾU NIÊN:</strong> Ban Thiếu Niên sẽ thực hiện chuyến công tác xã hội tại Trung Tâm Nuôi Dạy Trẻ Em Mồ Côi Hoa Mai, TP. Đà Nẵng vào chiều hôm nay, Chúa nhật 12.7.2026. Xin Chúa ban ơn trên Ban Thiếu Niên.</li><li><strong>6. ĐẠI HỘI ĐỒNG TLH LẦN THỨ 49:</strong> Hội Thánh hiệp lòng cầu nguyện xin Chúa ban phước đặc biệt cho Đại Hội Đồng Tổng Liên Hội lần thứ 49, tổ chức tại Nhà Thờ Viện Thánh Kinh Thần Học, Phường Bình Trưng, Tp. Hồ Chí Minh, từ 19h00 ngày 13.7.2026 đến 14h00 ngày 17.7.2026.</li><li><strong>7. Mục sư Quản nhiệm Hội Thánh:</strong> MSQN sẽ tham dự Đại hội Đồng TLH lần thứ 49, sau đó sẽ nghỉ phép đến 31.7.2026. Cầu xin Chúa ban bình an trên Tôi Tớ Chúa cùng gia đình.</li></ul>
+            <li><strong>4. Cầu thay cho các tôi con Chúa có nhu cầu sức khỏe:</strong> <ul class="sub-list"><li>• Chấp sự Nguyễn Thị Hồng Liên đang điều trị tại nhà, xin Chúa cho sớm hồi phục hoàn toàn.</li><li>• Bà Trương Thị Ngọc Chánh (CP2) đang điều trị tại BV Ung bướu.</li><li>• Ông Thân Đăng Tấn (CP5) đang điều trị tại viện BV Ung bướu.</li><li>• QPMS Phan Phụng Phục đau tim mạch.</li><li>• Ông cụ Châu Tập (CP2) bị tai biến, đang điều trị tại nhà.</li><li>• Ông Trần Công Vũ (CP2) bị tai biến, đang điều trị tại nhà.</li><li>• Ô. Nguyễn Hữu Ân (CP4) mổ mắt glucose, hiện đang bắn laser.</li><li>• Cô Phan Thị Thanh Xuân (CP5) đã được phẫu thuật viêm xoang, hiện còn đang điều trị.</li><li>• Bà Ngô Thị Thêm bị đau tim, điều trị ở bệnh viện Hoàn Mỹ.</li><li>• Chúa ban cho các gia đình hiếm muộn sớm có con cái.</li></ul></li><li><strong>5. BAN THIẾU NIÊN:</strong> Ban Thiếu Niên sẽ thực hiện chuyến công tác xã hội tại Trung Tâm Nuôi Dạy Trẻ Em Mồ Côi Hoa Mai, TP. Đà Nẵng vào chiều hôm nay, Chúa nhật 12.7.2026. Xin Chúa ban ơn trên Ban Thiếu Niên.</li><li><strong>6. ĐẠI HỘI ĐỒNG TLH LẦN THỨ 49:</strong> Hội Thánh hiệp lòng cầu nguyện xin Chúa ban phước đặc biệt cho Đại Hội Đồng Tổng Liên Hội lần thứ 49, tổ chức tại Nhà Thờ Viện Thánh Kinh Thần Học, Phường Bình Trưng, Tp. Hồ Chí Minh, từ 19h00 ngày 13.7.2026 đến 14h00 ngày 17.7.2026.</li><li><strong>7. Mục sư Quản nhiệm Hội Thánh:</strong> MSQN sẽ tham dự Đại hội Đồng TLH lần thứ 49, sau đó sẽ nghỉ phép đến 31.7.2026. Cầu xin Chúa ban bình an trên Tôi Tớ Chúa cùng gia đình.</li><li><strong>7. Mục sư Quản nhiệm Hội Thánh:</strong> MSQN sẽ tham dự Đại hội Đồng TLH lần thứ 49, sau đó sẽ nghỉ phép đến 31.7.2026. Cầu xin Chúa ban bình an trên Tôi Tớ Chúa cùng gia đình.</li></ul>
         </div>
     </div>
 
-    
+    <!-- PAGE 5: LỊCH CẦU NGUYỆN (nhân bản từ Cảm Tạ & Cầu Thay — chỉnh nội dung trực tiếp sau) -->
+    <div class="page-section" id="page5" spellcheck="false">
+        <h2 class="section-title">Kiêng Ăn Cầu Nguyện</h2>
+        <div class="card">
+            <p class="info-text">Nội dung chương trình Kiêng Ăn Cầu Nguyện — cập nhật sau.</p>
+        </div>
+
+        <h2 class="section-title">Cầu Nguyện Trong Tuần</h2>
+        <div class="week-nav">
+            <button onclick="scrollToDay('cn-thu2')">Thứ Hai</button>
+            <button onclick="scrollToDay('cn-thu3')">Thứ Ba</button>
+            <button onclick="scrollToDay('cn-thu4')">Thứ Tư</button>
+            <button onclick="scrollToDay('cn-thu5')">Thứ Năm</button>
+            <button onclick="scrollToDay('cn-thu6')">Thứ Sáu</button>
+            <button onclick="scrollToDay('cn-thu7')">Thứ Bảy</button>
+        </div>
+        <div class="card" id="cn-thu2">
+            <div class="info-title">Thứ Hai</div><p class="cvGsUA block-font-kerning-none block-font-feature-liga-on block-font-feature-clig-on block-font-feature-calt-on direction-ltr align-start para-style-body" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --8sD0Kg: none; font-family: YAGtMtzeGj8_0, _fb_, auto; --cyV3ZQ: 20px; --gJPlXQ: 1.67; --s8NbEA: p; line-height: 33px;"></p><ul><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Tạ ơn Chúa về chương trình thờ phượng Chúa và sinh hoạt trong ngày Chúa Nhật. (chương trình truyền giảng nếu có)</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Chúa ban ơn cho Ban trị sự TLH, các MS, Ủy viên TLH, Ủy viên chuyên trách các khối, các Ban Đại diện và các Quản nhiệm.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa ban ơn trên Hội Đồng Giáo Phẩm.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa thêm sức khỏe cho Quý Cụ Cao niên và gìn giữ các em nhỏ trong Hội Thánh.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Con dân Chúa đều có việc làm, nơi ở ổn định, trung tín trong sự thờ phượng, và dâng hiến.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa ban ơn cho Ban điều hành và các tín hữu trong Chi phái 1 và 2.</span></li></ul>
+        </div>
+        <div class="card" id="cn-thu3">
+            <div class="info-title">Thứ Ba</div><p class="cvGsUA block-font-kerning-none block-font-feature-liga-on block-font-feature-clig-on block-font-feature-calt-on direction-ltr align-start para-style-body" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --8sD0Kg: none; font-family: YAGtMtzeGj8_0, _fb_, auto; --cyV3ZQ: 20px; --gJPlXQ: 1.67; --s8NbEA: p; line-height: 33px;"></p><ul><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Viện Thánh Kinh Thần Học: Ban giảng huấn và Ban điều hành Viện được đầy ơn Chúa trong việc quản lý và dạy dỗ.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Ngân quỹ điều hành và ngân quỹ xây dựng cơ sở Viện được đầy đủ.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Các sinh vi</span><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">ên học tại Viện và sinh viên thực tập đạt kết quả, các Truyền Đạo tốt nghiệp sớm được bổ nhiệm.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa kêu gọi giới trẻ trong Giáo hội và Hội Thánh dâng mình hầu việc Chúa.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa ban ơn cho chương trình nhóm của các Chi phái tối nay.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa ban ơn cho Ban điều hành và các tín hữu trong Chi phái 3 và 4.</span></li></ul>
+        </div>
+        <div class="card" id="cn-thu4">
+            <div class="info-title">Thứ Tư</div><ul><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">Ông bà Ms quản nhiệm, Ban Chấp sự đầy ơn, sức mới để chăm lo công việc Chúa.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Chúa giữ gìn các trang thiết bị và khí cụ của Hội Thánh.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Chúa mở đường, ban ơn cho các tín hữu có việc làm, gia đình được bình an, hạnh phúc.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Các ban hướng dẫn và sinh hoạt các Ban ngành đem lại gây dựng niềm tin.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Các tín hữu dạn dĩ làm chứng về Chúa cho người khác.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa ban ơn cho chương trình nhóm của Ban Thanh Niên tối nay.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa ban ơn cho Ban điều hành và các tín hữu trong Chi phái 5 và 6.</span></li></ul>
+        </div>
+        <div class="card" id="cn-thu5">
+            <div class="info-title">Thứ Năm</div><ul><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">Chính quyền các cấp lãnh đạo đất nước ấm no, hạnh phúc, sớm thừa nhận các Chi hội, Hội Nhánh, Điểm nhóm đã được Tổng Liên Hội công nhận.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Các Hội Thánh trong Thành phố gồm các Chi hội, Hội Nhánh, Điểm nhóm ngày càng được gây dựng và tăng trưởng.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Chúa ban phước cho các tín hữu xa gần cộng tác, nâng đỡ, góp phần dâng hiến, xây dựng và phát triển Hội Thánh Hòa Mỹ.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Chúa nuôi dưỡng, chăm sóc từng tín hữu và các gia đình được bình an.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Ban Chăm sóc, Chứng đạo được Chúa ban ơn và trung tín trong công việc Chúa.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa ban ơn cho Ban điều hành và các tín hữu trong Chi phái 7</span><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none white-space-prewrap" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;"></span></li></ul>
+        </div>
+        <div class="card" id="cn-thu6">
+            <div class="info-title">Thứ Sáu</div><ul><li><span class="a_GcMg white-space-prewrap font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;"> </span><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">Thánh Kinh hội, in Kinh Thánh, sách bồi linh, chứng đạo, văn phòng phẩm Cơ đốc.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Công tác phát hành Kinh Thánh và các ấn phẩm Cơ đốc đến được mọi nơi.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Công tác dịch Kinh Thánh ra ngôn ngữ của các dân tộc Anh em.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Chúa chữa lành cho những tín hữu đang đau yếu và nâng đỡ các tín hữu đang gặp nan đề.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Học tập, việc làm và hôn nhân của Thanh Thiếu niên trong Hội Thánh.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Các tân tín hữu giữ vững đức tin trước sự bắt bớ từ nhiều phía.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Chúa ban ơn trên chương trình bồi linh tối nay và có nhiều tín hữu tham dự.</span></li><li><span class="a_GcMg font-feature-liga-on font-feature-clig-on font-feature-calt-on text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">Giảng luận: .........................HD: .........................</span></li></ul>
+        </div>
+        <div class="card" id="cn-thu7">
+            <div class="info-title">Thứ Bảy</div><ul><li><ul><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​ Công tác truyền giáo trên thế giới. Các chương trình truyền thanh, truyền hình, các website Tin Lành.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Ủy ban Truyền giáo của Tổng Liên Hội. Xin Chúa quan phòng, gìn giữ và tiếp trợ cho các giáo sĩ đang hầu việc Chúa ở các nơi.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Chúa ban ơn trên chương trình thờ phượng ngày mai và có nhiều tín hữu tham dự. Giảng luận: .........................HD: .........................</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Giáo viên, học viên TCN, lớp Giáo lý được đầy ơn Chúa. Buổi chiều Chúa nhật có sự nhóm lại sinh hoạt của các ban ngành.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa cho các gia đình trẻ sớm có con cái.</span></li><li><span class="a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none" style="color: rgba(0,0,0,var(--O42jJQ,1)); caret-color: rgb(0, 0, 0); --Ys-XuQ: none; font-kerning: none;">​Xin Chúa ban phước trên các công ty, doanh nghiệp, cửa hàng mua bán của các tín hữu trong Hội Thánh được thịnh vượng luôn.</span></li></ul></li></ul>
+        </div>
+
+        <h2 class="section-title"><br></h2>
+        <div class="card" style="border-left: 4px solid #34a853; background-color: #e6f4ea;">
+            <ul class="item-list" id="camta-list-2"><li>Gửi yêu cầu cầu nguyện</li></ul></div><div class="card" style="border-left: 4px solid #ea4335; background-color: #fce8e6;">
+        </div>
+
+        
+    </div>
+        <button onclick="document.execCommand('bold')"><b>B</b></button>
+        <button class="italic-btn" onclick="document.execCommand('italic')"><i>I</i></button>
+        <label>Màu chính (banner)
+            <input type="color" id="primaryColorPicker" value="#1a73e8" oninput="changePrimaryColor(this.value)">
+        </label>
+        <label>Màu phụ (viền/nhấn)
+            <input type="color" id="secondaryColorPicker" value="#ea4335" oninput="changeSecondaryColor(this.value)">
+        </label>
+        <span style="width:1px; height:24px; background:#5f6368; margin:0 2px;"></span>
+        <label>Font đoạn chọn
+            <select onchange="document.execCommand('fontName', false, this.value); this.selectedIndex=0;">
+                <option value="" disabled="" selected="">— chọn font —</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Oswald">Oswald</option>
+                <option value="Georgia">Georgia</option>
+                <option value="'Times New Roman'">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+                <option value="'Courier New'">Courier New</option>
+            </select>
+        </label>
+        <label>Cỡ chữ đoạn chọn
+            <select onchange="applyFontSizeToSelection(this.value); this.selectedIndex=0;">
+                <option value="" disabled="" selected="">— cỡ chữ —</option>
+                <option value="12">12px</option>
+                <option value="14">14px</option>
+                <option value="16">16px</option>
+                <option value="18">18px</option>
+                <option value="20">20px</option>
+                <option value="24">24px</option>
+                <option value="28">28px</option>
+                <option value="32">32px</option>
+            </select>
+        </label>
+        <label>Màu chữ đoạn chọn
+            <input type="color" value="#000000" oninput="document.execCommand('foreColor', false, this.value)">
+        </label>
+    </div>
 
     
 
@@ -536,26 +642,31 @@
         <a href="#" class="footer-btn active" id="fBtn0" onclick="switchPage(0)"><span class="footer-btn-icon">🏠</span>Trang Chủ</a>
         <a href="#" class="footer-btn" id="fBtn1" onclick="switchPage(1)"><span class="footer-btn-icon">⛪</span>Chương Trình</a>
         <a href="#" class="footer-btn" id="fBtn2" onclick="switchPage(2)"><span class="footer-btn-icon">📢</span>Thông Báo</a>
-        <a href="#" class="footer-btn" id="fBtn3" onclick="switchPage(3)"><span class="footer-btn-icon">📅</span>Chi phái/Ban</a>
+        <a href="#" class="footer-btn" id="fBtn3" onclick="switchPage(3)"><span class="footer-btn-icon">👥</span>Chi phái/Ban</a>
         <a href="#" class="footer-btn" id="fBtn4" onclick="switchPage(4)"><span class="footer-btn-icon">🙏</span>Cảm tạ/Cầu thay</a>
+        <a href="#" class="footer-btn" id="fBtn5" onclick="switchPage(5)"><span class="footer-btn-icon">📅</span>Lịch Cầu Nguyện</a>
     </div>
-</div>
+
 
 
 <script id="core-script">
     function switchPage(pageIndex) {
         document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
         document.getElementById('page' + pageIndex).classList.add('active');
-        document.querySelectorAll('.nav-tab').forEach((t, idx) => t.classList.toggle('active', idx === pageIndex));
         document.querySelectorAll('.footer-nav .footer-btn').forEach((b, idx) => b.classList.toggle('active', idx === pageIndex));
         window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Nhảy tới section của một ngày trong tuần (mục Cầu Nguyện Trong Tuần)
+    function scrollToDay(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function esc(s) { return (s || ''); }
 
     // ================= chuongtrinh.csv =================
     function renderChuongTrinhCsv(rows) {
-        // ---- Trang Chủ (Loai = ThongTin) ----
         const map = {};
         rows.filter(r => r.Loai === 'ThongTin').forEach(r => { map[r.Truong.trim()] = (r.GiaTri || '').trim(); });
 
@@ -571,7 +682,7 @@
             <div class="theme-box">
                 <div class="theme-title">Chủ đề</div>
                 <div class="theme-name">${esc(map.ChuDe)}</div>
-                <div class="meta-line" style="font-style: italic; font-size: 18.2px; color: #4a5568;">Kinh Thánh: ${esc(map.KinhThanhChuDe)}</div>
+                <div class="meta-line" style="font-style: italic; font-size: 16.4px; color: #5f6368;">Kinh Thánh: ${esc(map.KinhThanhChuDe)}</div>
             </div>
 
             <div class="card">
@@ -595,7 +706,6 @@
         `;
         document.getElementById('page0-content').outerHTML = `<div id="page0-content">${homeHtml}</div>`;
 
-        // ---- Chương Trình thờ phượng (Loai = TietMuc) ----
         const rowsHtml = rows.filter(r => r.Loai === 'TietMuc' && r.STT).map(r => {
             const chiTietHtml = (r.ChiTiet || '')
                 .split('|').map(s => s.trim()).filter(Boolean)
@@ -628,7 +738,6 @@
         return row ? row.NoiDung : '';
     }
 
-    // ---- Thông Báo ----
     function renderThongBao(rows) {
         const groups = groupByMuc(rows, 'ThongBao');
         let html = '';
@@ -636,22 +745,21 @@
             if (g.muc === 'TruyenGiang') {
                 html += `
                     <h2 class="section-title">Thông Báo Truyền Giảng</h2>
-                    <div class="theme-box" style="background-color: #fffaf0; border-color: #ed8936;">
-                        <div class="theme-title" style="color: #dd6b20;">${esc(findVal(g.rows,'ThangNam'))}</div>
-                        <div class="theme-name" style="font-size: 24.7px;">${esc(findVal(g.rows,'ChuDe'))}</div>
-                        <div style="font-size: 18.9px; text-align: left; margin-top: 10px; line-height: 1.6;">
+                    <div class="theme-box" style="background-color: #fef7e0; border-color: #fbbc05;"> <!-- Google Yellow Theme -->
+                        <div class="theme-title" style="color: #b06000;">${esc(findVal(g.rows,'ThangNam'))}</div>
+                        <div class="theme-name" style="font-size: 22.2px; color: var(--secondary-color);">${esc(findVal(g.rows,'ChuDe'))}</div>
+                        <div style="font-size: 17px; text-align: left; margin-top: 10px; line-height: 1.6;">
                             <p><strong>• Thời gian:</strong> ${esc(findVal(g.rows,'ThoiGian'))}</p>
                             <p><strong>• Kinh Thánh:</strong> ${esc(findVal(g.rows,'KinhThanh'))}</p>
                             <p><strong>• Diễn giả:</strong> ${esc(findVal(g.rows,'DienGia'))}</p>
                             <p><strong>• HDCT:</strong> ${esc(findVal(g.rows,'HDCT'))}</p>
                         </div>
-                        <p style="font-size: 17.6px; margin-top: 10px; font-style: italic; color: #4a5568; font-weight: 500;">
+                        <p style="font-size: 15.8px; margin-top: 10px; font-style: italic; color: #5f6368; font-weight: 500;">
                             ${esc(findVal(g.rows,'GhiChu'))}
                         </p>
                     </div>
                 `;
             } else {
-                // Áp dụng cho Cơ Đốc Giáo Dục và bất kỳ Ban ngành mới nào (Ban_...)
                 const infoBlocks = g.rows.map(r => {
                     const lines = (r.NoiDung || '').split('|').map(s => s.trim()).filter(Boolean);
                     const content = lines.length > 1
@@ -673,7 +781,6 @@
         document.getElementById('page2-content').innerHTML = html;
     }
 
-    // ---- Chi phái và Ban ----
     function renderChiPhaiBan(rows) {
         const groups = groupByMuc(rows, 'ChiPhaiBan');
         let html = '';
@@ -689,8 +796,8 @@
                 html += `
                     <h2 class="section-title">${esc(g.tieuDe)}</h2>
                     <div class="card">
-                        <p style="font-size: 17.6px; font-style: italic; color: #4a5568; margin-bottom: 10px; font-weight: 500;">${esc(ghiChu)}</p>
-                        <table style="width: 100%; font-size: 18.2px; border-collapse: collapse; line-height: 1.8;">${rowsHtml}</table>
+                        <p style="font-size: 15.8px; font-style: italic; color: #5f6368; margin-bottom: 10px; font-weight: 500;">${esc(ghiChu)}</p>
+                        <table style="width: 100%; font-size: 16.4px; border-collapse: collapse; line-height: 1.8;">${rowsHtml}</table>
                     </div>
                 `;
             } else if (g.muc === 'LichThuongKy') {
@@ -711,7 +818,7 @@
                     <div class="card">
                         <div class="info-title" style="border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin-bottom: 8px;">${esc(g.tieuDe)}</div>
                         <ul class="item-list">${items}</ul>
-                        <p style="font-size: 14.3px; color: #718096; margin-top: 10px; font-style: italic; border-top: 1px solid var(--border-color); padding-top: 6px;">${esc(ghiChu)}</p>
+                        <p style="font-size: 12.9px; color: #70757a; margin-top: 10px; font-style: italic; border-top: 1px solid var(--border-color); padding-top: 6px;">${esc(ghiChu)}</p>
                     </div>
                 `;
             }
@@ -719,25 +826,30 @@
         document.getElementById('page3-content').innerHTML = html;
     }
 
-    // ---- Cảm Tạ (CSV) ----
     function renderCamTa(rows) {
         const items = rows.filter(r => r.Trang === 'CamTa').sort((a,b) => (parseFloat(a.STT)||0)-(parseFloat(b.STT)||0));
-        document.getElementById('camta-list').innerHTML = items.map(r => `<li>${esc(r.NoiDung)}</li>`).join('');
+        const html = items.map(r => `<li>${esc(r.NoiDung)}</li>`).join('');
+        ['camta-list', 'camta-list-2'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.innerHTML = html;
+        });
     }
 
-    // ---- Cầu Nguyện Đặc Biệt mục 4-7 (CSV), nối vào sau 3 mục cố định ----
     function renderCauNguyenDacBiet(rows) {
         const items = rows.filter(r => r.Trang === 'CauNguyenDacBiet').sort((a,b) => (parseFloat(a.STT)||0)-(parseFloat(b.STT)||0));
-        const list = document.getElementById('caunguyendacbiet-list');
-        list.querySelector('.loading-msg')?.remove();
-        items.forEach(r => {
-            const subItems = (r.ChiTiet || '').split('|').map(s => s.trim()).filter(Boolean);
-            const subHtml = subItems.length
-                ? `<ul class="sub-list">${subItems.map(s => `<li>• ${s}</li>`).join('')}</ul>`
-                : '';
-            const li = document.createElement('li');
-            li.innerHTML = `<strong>${esc(r.Nhan)}</strong> ${esc(r.NoiDung)}${subHtml}`;
-            list.appendChild(li);
+        ['caunguyendacbiet-list', 'caunguyendacbiet-list-2'].forEach(id => {
+            const list = document.getElementById(id);
+            if (!list) return;
+            list.querySelector('.loading-msg')?.remove();
+            items.forEach(r => {
+                const subItems = (r.ChiTiet || '').split('|').map(s => s.trim()).filter(Boolean);
+                const subHtml = subItems.length
+                    ? `<ul class="sub-list">${subItems.map(s => `<li>• ${s}</li>`).join('')}</ul>`
+                    : '';
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${esc(r.Nhan)}</strong> ${esc(r.NoiDung)}${subHtml}`;
+                list.appendChild(li);
+            });
         });
     }
 
@@ -761,37 +873,73 @@
         document.body.classList.toggle('editing-mode', isEditing);
     }
 
-    // Đổi màu banner chính (h2.section-title, chữ tiêu đề...)
-    function changePrimaryColor(hex) {
-        document.documentElement.style.setProperty('--primary-color', hex);
-    }
-    // Đổi màu phụ (viền theme-box, dấu chấm bullet, khung câu gốc...)
-    function changeSecondaryColor(hex) {
-        document.documentElement.style.setProperty('--secondary-color', hex);
-    }
-    // Đổi font chữ toàn trang
-    function changeFont(fontFamily) {
-        document.body.style.fontFamily = fontFamily;
+    function changePrimaryColor(hex) { document.documentElement.style.setProperty('--primary-color', hex); }
+    function changeSecondaryColor(hex) { document.documentElement.style.setProperty('--secondary-color', hex); }
+
+    // Đặt cỡ chữ chính xác (px) cho đoạn text đang bôi đen — execCommand chỉ hỗ trợ 7 mức,
+    // nên dùng mẹo: gán mức 7 rồi chuyển thành font-size px thật qua CSS inline.
+    function applyFontSizeToSelection(px) {
+        if (!px) return;
+        document.execCommand('fontSize', false, '7');
+        document.querySelectorAll('font[size="7"]').forEach(el => {
+            el.removeAttribute('size');
+            el.style.fontSize = px + 'px';
+        });
     }
 
-    // ================= Xuất file index.html sạch (không còn nút Edit/Save, không phụ thuộc CSV) =================
+    // ================= Nhân bản Banner / Khung text (dùng trong trang Thông Báo) =================
+    function cloneBanner(containerId) {
+        const container = document.getElementById(containerId);
+        const banners = container.querySelectorAll('h2.section-title');
+        if (!banners.length) { alert('Chưa có banner nào để nhân bản. Đợi dữ liệu tải xong trước.'); return; }
+        const lastBanner = banners[banners.length - 1];
+        const maybeCard = lastBanner.nextElementSibling;
+        const hasCard = maybeCard && maybeCard.classList.contains('card');
+
+        const clonedBanner = lastBanner.cloneNode(true);
+        clonedBanner.textContent = clonedBanner.textContent + ' (Bản sao — sửa tên tại đây)';
+
+        if (hasCard) {
+            const clonedCard = maybeCard.cloneNode(true);
+            maybeCard.after(clonedBanner);
+            clonedBanner.after(clonedCard);
+            clonedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            lastBanner.after(clonedBanner);
+            clonedBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function cloneTextBox(containerId) {
+        const container = document.getElementById(containerId);
+        const cards = container.querySelectorAll('.card');
+        if (!cards.length) { alert('Chưa có khung nào để nhân bản. Đợi dữ liệu tải xong trước.'); return; }
+        const lastCard = cards[cards.length - 1];
+        const blocks = lastCard.querySelectorAll('.info-block');
+        if (blocks.length) {
+            const lastBlock = blocks[blocks.length - 1];
+            const clonedBlock = lastBlock.cloneNode(true);
+            lastBlock.after(clonedBlock);
+            clonedBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            // Khung dạng khác (vd. theme-box Truyền Giảng) — nhân bản cả nội dung bên trong card
+            const clonedInner = lastCard.cloneNode(true);
+            clonedInner.className = 'info-block';
+            lastCard.appendChild(clonedInner);
+            clonedInner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
     function saveCleanFile() {
         const clone = document.documentElement.cloneNode(true);
-
-        // Bỏ toolbar Edit/Save và thanh định dạng
         clone.querySelector('#editToolbar')?.remove();
         clone.querySelector('#formatToolbar')?.remove();
-
-        // Bỏ thuộc tính contenteditable còn sót lại
+        clone.querySelectorAll('.clone-tools').forEach(el => el.remove());
         clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-
-        // Bỏ script PapaParse và script tải CSV — nội dung đã được "đóng cứng" vào HTML
         clone.querySelector('#papaparse-script')?.remove();
         clone.querySelector('#data-loader-script')?.remove();
 
-        // Đặt lại Trang Chủ làm trang mặc định khi mở file
         clone.querySelectorAll('.page-section').forEach((s, idx) => s.classList.toggle('active', idx === 0));
-        clone.querySelectorAll('.nav-tab').forEach((t, idx) => t.classList.toggle('active', idx === 0));
         clone.querySelectorAll('.footer-btn').forEach((b, idx) => b.classList.toggle('active', idx === 0));
         clone.querySelector('body')?.classList.remove('editing-mode');
 
@@ -811,4 +959,4 @@
 
 
 
-</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><grammarly-popups data-grammarly-shadow-root="true" class="dnXmp" style="--rem: 16;"></grammarly-popups><grammarly-extension-vbars data-grammarly-shadow-root="true" class="dnXmp" style="display: contents; --rem: 16;"></grammarly-extension-vbars><grammarly-extension-vbar-card data-grammarly-shadow-root="true" class="dnXmp" style="--rem: 16;"></grammarly-extension-vbar-card><grammarly-extension-vbars-feedback-form data-grammarly-shadow-root="true" class="dnXmp" style="--rem: 16;"></grammarly-extension-vbars-feedback-form></html>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
