@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
+<html lang="vi" style="--primary-color: #036668;"><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; pointer-events: none; --rem: 16;"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; pointer-events: none; --rem: 16;"></grammarly-extension><head><style data-merge-styles="true"></style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chương Trình Thờ Phượng - HTTL Hòa Mỹ</title>
@@ -140,6 +139,54 @@
         #editBtn.editing { background-color: #e53e3e; }
         #saveBtn { background-color: var(--secondary-color); color: #1a365d; }
 
+        .format-toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 250;
+            background-color: #2d3748;
+            padding: 8px 10px;
+            display: none;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .format-toolbar.visible { display: flex; }
+        .format-toolbar button {
+            border: none;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            background-color: #4a5568;
+            color: #fff;
+        }
+        .format-toolbar button.italic-btn { font-style: italic; }
+        .format-toolbar label {
+            font-size: 11px;
+            color: #cbd5e0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .format-toolbar input[type="color"] {
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 4px;
+            padding: 0;
+            cursor: pointer;
+        }
+        .format-toolbar select {
+            font-size: 12px;
+            padding: 4px;
+            border-radius: 4px;
+            border: none;
+        }
+
         .page-section[contenteditable="true"] {
             outline: 2px dashed var(--secondary-color);
             outline-offset: 4px;
@@ -148,9 +195,10 @@
             background-color: #fffbea;
             cursor: text;
         }
+        body.editing-mode .nav-tabs { top: 46px; }
     </style>
-</head>
-<body>
+<style></style></head>
+<body data-new-gr-c-s-check-loaded="14.1138.0" data-gr-ext-installed="" class="" data-new-gr-c-s-loaded="14.1138.0" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;">
 
 <div class="mobile-container">
     <div class="nav-tabs" id="topNav">
@@ -158,39 +206,266 @@
         <a href="#" class="nav-tab" onclick="switchPage(1)">Chương Trình</a>
         <a href="#" class="nav-tab" onclick="switchPage(2)">Thông Báo</a>
         <a href="#" class="nav-tab" onclick="switchPage(3)">Chi phái và Ban</a>
-        <a href="#" class="nav-tab" onclick="switchPage(4)">Cảm tạ & Cầu thay</a>
+        <a href="#" class="nav-tab" onclick="switchPage(4)">Cảm tạ &amp; Cầu thay</a>
     </div>
 
     <!-- PAGE 0: TRANG CHỦ - render từ chuongtrinh.csv (Loai=ThongTin) -->
     <div class="page-section active" id="page0">
-        <div id="page0-content" class="loading-msg">Đang tải dữ liệu...</div>
+        <div id="page0-content">
+            <div class="header-main">
+                <div class="church-title">Hội Thánh Tin Lành Việt Nam</div>
+                <div class="church-subtitle">CHI HỘI HÒA MỸ</div>
+                <div class="church-address">246 Tôn Đức Thắng, TP. Đà Nẵng</div>
+                <h1 class="title">CHƯƠNG TRÌNH THỜ PHƯỢNG</h1>
+                <div class="subtitle">Chúa Nhật 19 Tháng 07 Năm 2026</div>
+            </div>
+
+            <div class="theme-box">
+                <div class="theme-title">Chủ đề</div>
+                <div class="theme-name">ĐƯỢC VÀ MẤT</div>
+                <div class="meta-line" style="font-style: italic; font-size: 18.2px; color: #4a5568;">Kinh Thánh: Mathiơ 16:26</div>
+            </div>
+
+            <div class="card">
+                <div class="meta-info">
+                    <div class="meta-line"><span class="meta-label">Giảng luận:</span> Mục sư ABCD</div>
+                    <div class="meta-line"><span class="meta-label">Hướng dẫn chương trình:</span> Chấp sự Huỳnh Chí Nhật</div>
+                </div>
+            </div>
+
+            <div class="scripture-box">
+                <span class="scripture-ref">Kinh Thánh: Ma-thi-ơ 16:26</span>
+                "Vì nếu ai muốn cứu sự sống mình thì sẽ mất, còn ai vì cớ ta mất sự sống mình thì sẽ được lại. Nếu người nào được cả thiên hạ mà mất linh hồn mình, thì có ích gì?"
+            </div>
+
+            <div class="caugoc-box">
+                <span class="caugoc-title">Câu Gốc</span>
+                "Hãy tìm kiếm nước Đức Chúa Trời trước hết, rồi mọi điều cần thiết sẽ được ban thêm cho."
+            </div>
+
+            <div class="doc-id-bottom">Bản chương trình số: 30</div>
+        </div>
     </div>
 
     <!-- PAGE 1: CHƯƠNG TRÌNH - render từ chuongtrinh.csv (Loai=TietMuc) -->
     <div class="page-section" id="page1">
         <h2 class="section-title">Chương Trình Thờ Phượng</h2>
         <table class="liturgy-table" id="liturgy-table-body">
-            <tr><td class="liturgy-cell loading-msg">Đang tải dữ liệu...</td></tr>
-        </table>
+                <tbody><tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">1</td>
+                    <td class="liturgy-cell liturgy-content">Chào mừng</td>
+                    <td class="liturgy-cell liturgy-lead">Hướng dẫn chương trình</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">2</td>
+                    <td class="liturgy-cell liturgy-content">Thánh ca 26<div class="liturgy-detail">CHÚC CHO ĐẤNG NGỒI TRÊN NGÔI</div></td>
+                    <td class="liturgy-cell liturgy-lead">Hội Thánh</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">3</td>
+                    <td class="liturgy-cell liturgy-content">Bài Tín Điều Các Sứ Đồ</td>
+                    <td class="liturgy-cell liturgy-lead">Hội Thánh</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">4</td>
+                    <td class="liturgy-cell liturgy-content">Cầu Nguyện khai lễ</td>
+                    <td class="liturgy-cell liturgy-lead">Mục sư Quản nhiệm</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">5</td>
+                    <td class="liturgy-cell liturgy-content">Tôn Vinh Chúa<div class="liturgy-detail">Thánh Ca 40: THÁNH THAY! THÁNH THAY! THÁNH THAY!</div><div class="liturgy-detail">Thánh Ca 550: TÔN CAO DANH CHÚA</div></td>
+                    <td class="liturgy-cell liturgy-lead">Hội Thánh</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">6</td>
+                    <td class="liturgy-cell liturgy-content">KTĐĐ số 58<div class="liturgy-detail">SỰ VUI VẺ TRONG NHÀ CHÚA</div></td>
+                    <td class="liturgy-cell liturgy-lead">Hội Thánh</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">7</td>
+                    <td class="liturgy-cell liturgy-content">Thánh ca 319<div class="liturgy-detail">LO LÀM VIỆC MAU ĐÊM ĐẾN KIA</div></td>
+                    <td class="liturgy-cell liturgy-lead">Chi Phái Một</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">8</td>
+                    <td class="liturgy-cell liturgy-content">Cảm tạ - cầu thay</td>
+                    <td class="liturgy-cell liturgy-lead">Hướng dẫn chương trình</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">9</td>
+                    <td class="liturgy-cell liturgy-content">TC 268<div class="liturgy-detail">THỎA THÍCH THAY TIN CẬY CHÚA JÊSUS</div></td>
+                    <td class="liturgy-cell liturgy-lead">Gia đình MSQN</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">10</td>
+                    <td class="liturgy-cell liturgy-content">Dâng Hiến<div class="liturgy-detail">Tôn vinh Chúa: THI THIÊN 91 (Ông Công Trứ)</div></td>
+                    <td class="liturgy-cell liturgy-lead">Ban Chấp sự</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">11</td>
+                    <td class="liturgy-cell liturgy-content">Đọc Kinh Thánh</td>
+                    <td class="liturgy-cell liturgy-lead">Hướng dẫn Chương trình</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">12</td>
+                    <td class="liturgy-cell liturgy-content">Giảng Luận</td>
+                    <td class="liturgy-cell liturgy-lead">Mục sư ABCD</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">13</td>
+                    <td class="liturgy-cell liturgy-content">Cầu Nguyện</td>
+                    <td class="liturgy-cell liturgy-lead">Thanh niên</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">14</td>
+                    <td class="liturgy-cell liturgy-content">Thông báo</td>
+                    <td class="liturgy-cell liturgy-lead">Hướng dẫn chương trình</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">15</td>
+                    <td class="liturgy-cell liturgy-content">Cầu Nguyện Chung - Thánh Ca 23</td>
+                    <td class="liturgy-cell liturgy-lead">Hội Thánh</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">16</td>
+                    <td class="liturgy-cell liturgy-content">Chúc phước</td>
+                    <td class="liturgy-cell liturgy-lead">Mục sư Quản nhiệm</td>
+                </tr>
+            
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">17</td>
+                    <td class="liturgy-cell liturgy-content">Thánh Ca 455<div class="liturgy-detail">VẺ TƯƠI ĐẸP CỦA CHRIST</div></td>
+                    <td class="liturgy-cell liturgy-lead">Ban Âm Nhạc</td>
+                </tr>
+            </tbody></table>
     </div>
 
     <!-- PAGE 2: THÔNG BÁO - render từ thongtin.csv (Trang=ThongBao) -->
-    <div class="page-section" id="page2">
-        <div id="page2-content" class="loading-msg">Đang tải dữ liệu...</div>
+    <div class="page-section" id="page2" spellcheck="false">
+        <div id="page2-content" class="loading-msg">
+                    <h2 class="section-title">Thông Báo Truyền Giảng</h2>
+                    <div class="theme-box" style="background-color: #fffaf0; border-color: #ed8936;">
+                        <div class="theme-title" style="color: #dd6b20;">CHƯƠNG TRÌNH TRUYỀN GIẢNG THÁNG 7/2026</div>
+                        <div class="theme-name" style="font-size: 24.7px;">ĐƯỢC VÀ MẤT</div>
+                        <div style="font-size: 18.9px; text-align: left; margin-top: 10px; line-height: 1.6;">
+                            <p><strong>• Thời gian:</strong> 19h30, Chúa nhật 19/07/2026</p>
+                            <p><strong>• Kinh Thánh:</strong> Mathiơ 16:26</p>
+                            <p><strong>• Diễn giả:</strong> Mục sư Ông Văn Tín</p>
+                            <p><strong>• HDCT:</strong> Chấp sự Huỳnh Chí Nhật</p>
+                        </div>
+                        <p style="font-size: 17.6px; margin-top: 10px; font-style: italic; color: #4a5568; font-weight: 500;">
+                            Xin con dân Chúa thêm lời cầu nguyện, chứng đạo mời thân hữu.
+                        </p>
+                    </div>
+                
+                    <h2 class="section-title">Ban Cơ Đốc Giáo Dục</h2>
+                    <div class="card">
+                        <div class="info-block">
+                            <div class="info-title">1. Các lớp Trường Chúa Nhật từ Cao Niên đến Thanh Niên:</div>
+                            <p class="info-text">Bài 86. CHÚA GIÊ-XU RỬA CHÂN CHO CÁC MÔN ĐỒ</p>
+                        </div>
+                    
+                        <div class="info-block">
+                            <div class="info-title">2. Lớp GIÁO LÝ BÁP TÊM (Khóa mới)</div>
+                            <p class="info-text">Học lúc 7.00 sáng Chúa Nhật hàng tuần, MSQN giảng dạy.</p>
+                        </div>
+                    
+                        <div class="info-block">
+                            <div class="info-title">3. Lớp THÁNH KINH CĂN BẢN</div>
+                            <ul class="item-list"><li>Lớp ban ngày: 8.00-14.30 từ thứ Hai đến thứ Sáu (29.6-9.7.2026)</li><li>Lớp ban đêm: 18.00-21.30 các tối thứ Hai, Ba, Tư hàng tuần (29.06-5.8/2026)</li></ul>
+                        </div>
+                    </div>
+                
+                    <h2 class="section-title">Ban Thanh Niên</h2>
+                    <div class="card">
+                        <div class="info-block">
+                            <div class="info-title">1. Sinh hoạt hàng tuần</div>
+                            <p class="info-text">19g15 tối thứ Tư tại phòng nhóm Thanh Niên</p>
+                        </div>
+                    
+                        <div class="info-block">
+                            <div class="info-title">2. Trại hè Thanh Niên 2026</div>
+                            <p class="info-text">Dự kiến tổ chức cuối tháng 8/2026, chi tiết sẽ thông báo sau.</p>
+                        </div>
+                    </div>
+                </div>
     </div>
 
     <!-- PAGE 3: CHI PHÁI VÀ BAN - render từ thongtin.csv (Trang=ChiPhaiBan) -->
-    <div class="page-section" id="page3">
-        <div id="page3-content" class="loading-msg">Đang tải dữ liệu...</div>
+    <div class="page-section" id="page3" spellcheck="false">
+        <div id="page3-content" class="loading-msg">
+                    <h2 class="section-title">Sinh Hoạt Các Chi Phái</h2>
+                    <div class="card">
+                        <p style="font-size: 17.6px; font-style: italic; color: #4a5568; margin-bottom: 10px; font-weight: 500;">(Kính mời quý con dân Chúa sinh hoạt ban ngành chi phái lúc 19g30 thứ Ba)</p>
+                        <table style="width: 100%; font-size: 18.2px; border-collapse: collapse; line-height: 1.8;">
+                    <tbody><tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>CP1:</strong> ÔB Nguyễn Hữu Linh Tuyền</td>
+                    </tr>
+                
+                    <tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP2: ÔB Nguyễn Ngọc Hùng</td>
+                    </tr>
+                
+                    <tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP3: ÔB Lê Xuân Hoàng Vũ</td>
+                    </tr>
+                
+                    <tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP4: ÔB Trần Đăng Thịnh</td>
+                    </tr>
+                
+                    <tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP5: Cô Lê Thị Hiển</td>
+                    </tr>
+                
+                    <tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP6: ÔB Đoàn Đức Giang</td>
+                    </tr>
+                
+                    <tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP7: QP. Lê Đức Nghĩa</td>
+                    </tr>
+                
+                    <tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);">CP8: ÔB Ông Văn Thanh Hồi</td>
+                    </tr>
+                </tbody></table>
+                    </div>
+                
+                    <h2 class="section-title">Lịch Sinh Hoạt Thường Kỳ</h2>
+                    <div class="card">
+                        <div class="info-title" style="border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin-bottom: 8px;">CHƯƠNG TRÌNH CHUNG CỦA HỘI THÁNH</div>
+                        <ul class="item-list"><li><strong>05g00 thứ Hai đến thứ Bảy:</strong> Cầu nguyện buổi sáng</li><li><strong>07g00 Chúa Nhật:</strong> Trường Chúa Nhật</li><li><strong>08g00 Chúa Nhật:</strong> Chương Trình Thờ Phượng Chúa</li><li><strong>19g30 thứ Ba:</strong> Sinh hoạt các Chi phái</li><li><strong>19g30 thứ Sáu:</strong> Thờ phượng Bồi linh</li><li><strong>10g-12g Thứ Bảy tuần thứ nhất trong tháng:</strong> Chương trình Kiêng Ăn Cầu Nguyện</li><li><strong>19g30 Chúa Nhật tuần thứ ba trong tháng:</strong> Chương trình TRUYỀN GIẢNG</li></ul>
+                    </div>
+                
+                    <div class="card">
+                        <div class="info-title" style="border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin-bottom: 8px;">CÁC BAN</div>
+                        <ul class="item-list"><li><strong>08g00 Chúa nhật:</strong> Ban Thiếu nhi ấu</li><li><strong>14g30 Chúa Nhật:</strong> Ban Thiếu niên, Ban Thiếu nhi</li><li><strong>19g15 thứ Tư:</strong> Ban Thanh niên</li><li><strong>19g30 thứ Bảy tuần 2 và 4:</strong> Ban Thanh tráng</li><li><strong>19g30 thứ Bảy tuần 2 và 4 :</strong> Ban Tráng niên</li><li><strong>14g30 Chúa Nhật tuần thứ 2:</strong> Ban Phụ nữ</li><li><strong>19g30 Chúa Nhật tuần thứ 4:</strong> Ban Trung niên</li><li><strong>14g30 Chúa Nhật tuần thứ 4:</strong> Ban Cao niên</li></ul>
+                        <p style="font-size: 14.3px; color: #718096; margin-top: 10px; font-style: italic; border-top: 1px solid var(--border-color); padding-top: 6px;">Xin lưu ý trên đây là chương trình thường kỳ, các thay đổi đột xuất (nếu có) sẽ được thông báo chính thức trên tờ chương trình hàng tuần.</p>
+                    </div>
+                </div>
     </div>
 
     <!-- PAGE 4: CẢM TẠ & CẦU THAY - Cảm Tạ (CSV) + Cầu Thay (tĩnh, cố định) + Cầu Nguyện Đặc Biệt (3 mục đầu tĩnh + CSV) -->
     <div class="page-section" id="page4">
         <h2 class="section-title">Cảm Tạ</h2>
         <div class="card" style="border-left: 4px solid #48bb78; background-color: #f6fedb;">
-            <ul class="item-list" id="camta-list">
-                <li class="loading-msg">Đang tải dữ liệu...</li>
-            </ul>
+            <ul class="item-list" id="camta-list"><li>Hội Thánh được bình an, phước hạnh.</li><li>Gia đình ÔB. Phạm Văn Ánh (CP2) cùng Hội Thánh đã cầu nguyện dâng lên Chúa việc xây dựng nhà lúc 6h00 thứ hai, 06.7.2026.</li><li>Gia đình Ô. Huỳnh Văn Tảo (CP3) cùng Hội Thánh đã cầu nguyện dâng lên Chúa việc xây dựng nhà lúc 6h00 thứ năm, 09.7.2026.</li></ul>
         </div>
 
         <h2 class="section-title">Cầu Thay</h2>
@@ -248,15 +523,14 @@
                 <li><strong>2. Mở rộng cơ sở nhà Chúa:</strong> Hội Thánh sớm mua được phần đất liền kề nhà thờ để mở rộng cơ sở nhà Chúa, nhằm đáp ứng nhu cầu sinh hoạt của Hội Thánh.</li>
                 <li><strong>3. Trường Chúa Nhật:</strong> Xin Chúa cho Trường Chúa Nhật có 200 học viên tham gia học thường xuyên.</li>
                 <!-- Các mục 4-7 dưới đây được chèn tự động từ thongtin.csv -->
-                <li class="loading-msg">Đang tải dữ liệu...</li>
-            </ul>
+                
+            <li><strong>4. Cầu thay cho các tôi con Chúa có nhu cầu sức khỏe:</strong> <ul class="sub-list"><li>• Chấp sự Nguyễn Thị Hồng Liên đang điều trị tại nhà, xin Chúa cho sớm hồi phục hoàn toàn.</li><li>• Bà Trương Thị Ngọc Chánh (CP2) đang điều trị tại BV Ung bướu.</li><li>• Ông Thân Đăng Tấn (CP5) đang điều trị tại viện BV Ung bướu.</li><li>• QPMS Phan Phụng Phục đau tim mạch.</li><li>• Ông cụ Châu Tập (CP2) bị tai biến, đang điều trị tại nhà.</li><li>• Ông Trần Công Vũ (CP2) bị tai biến, đang điều trị tại nhà.</li><li>• Ô. Nguyễn Hữu Ân (CP4) mổ mắt glucose, hiện đang bắn laser.</li><li>• Cô Phan Thị Thanh Xuân (CP5) đã được phẫu thuật viêm xoang, hiện còn đang điều trị.</li><li>• Bà Ngô Thị Thêm bị đau tim, điều trị ở bệnh viện Hoàn Mỹ.</li><li>• Chúa ban cho các gia đình hiếm muộn sớm có con cái.</li></ul></li><li><strong>5. BAN THIẾU NIÊN:</strong> Ban Thiếu Niên sẽ thực hiện chuyến công tác xã hội tại Trung Tâm Nuôi Dạy Trẻ Em Mồ Côi Hoa Mai, TP. Đà Nẵng vào chiều hôm nay, Chúa nhật 12.7.2026. Xin Chúa ban ơn trên Ban Thiếu Niên.</li><li><strong>6. ĐẠI HỘI ĐỒNG TLH LẦN THỨ 49:</strong> Hội Thánh hiệp lòng cầu nguyện xin Chúa ban phước đặc biệt cho Đại Hội Đồng Tổng Liên Hội lần thứ 49, tổ chức tại Nhà Thờ Viện Thánh Kinh Thần Học, Phường Bình Trưng, Tp. Hồ Chí Minh, từ 19h00 ngày 13.7.2026 đến 14h00 ngày 17.7.2026.</li><li><strong>7. Mục sư Quản nhiệm Hội Thánh:</strong> MSQN sẽ tham dự Đại hội Đồng TLH lần thứ 49, sau đó sẽ nghỉ phép đến 31.7.2026. Cầu xin Chúa ban bình an trên Tôi Tớ Chúa cùng gia đình.</li></ul>
         </div>
     </div>
 
-    <div class="edit-toolbar" id="editToolbar">
-        <button id="editBtn" onclick="toggleEdit()">✏️ Edit</button>
-        <button id="saveBtn" onclick="saveCleanFile()">💾 Lưu file sạch</button>
-    </div>
+    
+
+    
 
     <div class="footer-nav">
         <a href="#" class="footer-btn active" id="fBtn0" onclick="switchPage(0)"><span class="footer-btn-icon">🏠</span>Trang Chủ</a>
@@ -267,7 +541,7 @@
     </div>
 </div>
 
-<script id="papaparse-script" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
 <script id="core-script">
     function switchPage(pageIndex) {
         document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
@@ -407,19 +681,16 @@
             if (g.muc === 'SinhHoatChiPhai') {
                 const ghiChu = findVal(g.rows, '_GhiChu');
                 const cps = g.rows.filter(r => r.Nhan && r.Nhan.startsWith('CP'));
-                let tableRows = '';
-                for (let i = 0; i < 4; i++) {
-                    const a = cps[i], b = cps[i + 4];
-                    tableRows += `<tr>
-                        <td style="padding: 4px 0; width: 50%;"><strong>${a ? a.Nhan : ''}:</strong> ${a ? esc(a.NoiDung) : ''}</td>
-                        <td style="padding: 4px 0; width: 50%;"><strong>${b ? b.Nhan : ''}:</strong> ${b ? esc(b.NoiDung) : ''}</td>
-                    </tr>`;
-                }
+                const rowsHtml = cps.map(cp => `
+                    <tr>
+                        <td style="padding: 6px 0; border-bottom: 1px dashed var(--border-color);"><strong>${esc(cp.Nhan)}:</strong> ${esc(cp.NoiDung)}</td>
+                    </tr>
+                `).join('');
                 html += `
                     <h2 class="section-title">${esc(g.tieuDe)}</h2>
                     <div class="card">
                         <p style="font-size: 17.6px; font-style: italic; color: #4a5568; margin-bottom: 10px; font-weight: 500;">${esc(ghiChu)}</p>
-                        <table style="width: 100%; font-size: 18.2px; border-collapse: collapse; line-height: 1.8;">${tableRows}</table>
+                        <table style="width: 100%; font-size: 18.2px; border-collapse: collapse; line-height: 1.8;">${rowsHtml}</table>
                     </div>
                 `;
             } else if (g.muc === 'LichThuongKy') {
@@ -486,14 +757,30 @@
         const btn = document.getElementById('editBtn');
         btn.textContent = isEditing ? '✅ Xong sửa' : '✏️ Edit';
         btn.classList.toggle('editing', isEditing);
+        document.getElementById('formatToolbar').classList.toggle('visible', isEditing);
+        document.body.classList.toggle('editing-mode', isEditing);
+    }
+
+    // Đổi màu banner chính (h2.section-title, chữ tiêu đề...)
+    function changePrimaryColor(hex) {
+        document.documentElement.style.setProperty('--primary-color', hex);
+    }
+    // Đổi màu phụ (viền theme-box, dấu chấm bullet, khung câu gốc...)
+    function changeSecondaryColor(hex) {
+        document.documentElement.style.setProperty('--secondary-color', hex);
+    }
+    // Đổi font chữ toàn trang
+    function changeFont(fontFamily) {
+        document.body.style.fontFamily = fontFamily;
     }
 
     // ================= Xuất file index.html sạch (không còn nút Edit/Save, không phụ thuộc CSV) =================
     function saveCleanFile() {
         const clone = document.documentElement.cloneNode(true);
 
-        // Bỏ toolbar Edit/Save
+        // Bỏ toolbar Edit/Save và thanh định dạng
         clone.querySelector('#editToolbar')?.remove();
+        clone.querySelector('#formatToolbar')?.remove();
 
         // Bỏ thuộc tính contenteditable còn sót lại
         clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
@@ -506,6 +793,7 @@
         clone.querySelectorAll('.page-section').forEach((s, idx) => s.classList.toggle('active', idx === 0));
         clone.querySelectorAll('.nav-tab').forEach((t, idx) => t.classList.toggle('active', idx === 0));
         clone.querySelectorAll('.footer-btn').forEach((b, idx) => b.classList.toggle('active', idx === 0));
+        clone.querySelector('body')?.classList.remove('editing-mode');
 
         const htmlString = '<!DOCTYPE html>\n' + clone.outerHTML;
         const blob = new Blob([htmlString], { type: 'text/html' });
@@ -519,15 +807,8 @@
         URL.revokeObjectURL(url);
     }
 </script>
-<script id="data-loader-script">
-    loadCSV('chuongtrinh.csv', renderChuongTrinhCsv);
-    loadCSV('thongtin.csv', (rows) => {
-        renderThongBao(rows);
-        renderChiPhaiBan(rows);
-        renderCamTa(rows);
-        renderCauNguyenDacBiet(rows);
-    });
-</script>
 
-</body>
-</html>
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><grammarly-popups data-grammarly-shadow-root="true" class="dnXmp" style="--rem: 16;"></grammarly-popups><grammarly-extension-vbars data-grammarly-shadow-root="true" class="dnXmp" style="display: contents; --rem: 16;"></grammarly-extension-vbars><grammarly-extension-vbar-card data-grammarly-shadow-root="true" class="dnXmp" style="--rem: 16;"></grammarly-extension-vbar-card><grammarly-extension-vbars-feedback-form data-grammarly-shadow-root="true" class="dnXmp" style="--rem: 16;"></grammarly-extension-vbars-feedback-form></html>
