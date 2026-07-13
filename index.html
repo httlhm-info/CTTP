@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương Trình Thờ Phượng - HTTL Hòa Mỹ</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #c5a880;
+            --text-color: #2d3748;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --accent-bg: #fdfbf7;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            padding-bottom: 70px;
+        }
+        .mobile-container {
+            max-width: 480px; margin: 0 auto; background-color: var(--card-bg);
+            min-height: 100vh; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .nav-tabs {
+            display: flex; overflow-x: auto; position: sticky; top: 0;
+            background-color: var(--primary-color); z-index: 100; scrollbar-width: none;
+        }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+        .nav-tab {
+            flex: 0 0 auto; padding: 14px 16px; color: #e2e8f0; text-decoration: none;
+            font-size: 18px; font-weight: 500; border-bottom: 3px solid transparent; white-space: nowrap;
+        }
+        .nav-tab.active {
+            color: #ffffff; border-bottom-color: var(--secondary-color); background-color: rgba(255,255,255,0.05);
+        }
+        .page-section { display: none; padding: 20px 16px; animation: fadeIn 0.3s ease; }
+        .page-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .header-main { text-align: center; padding: 24px 0; border-bottom: 2px double var(--secondary-color); margin-bottom: 20px; }
+        .church-title { font-size: 16.9px; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-color); font-weight: 700; }
+        .church-subtitle { font-size: 23.4px; font-weight: 800; color: var(--primary-color); margin: 2px 0; }
+        .church-address { font-size: 15.6px; color: #718096; margin-bottom: 8px; }
+
+        h1.title { font-size: 23.4px; color: var(--primary-color); margin: 12px 0 4px 0; font-weight: 800; }
+        .subtitle { font-size: 16.9px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .theme-box {
+            background-color: var(--accent-bg); border: 1px solid var(--secondary-color); border-radius: 6px;
+            padding: 14px; text-align: center; margin: 16px 0;
+        }
+        .theme-title { font-size: 16.9px; color: #744210; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; }
+        .theme-name { font-size: 28.6px; color: var(--primary-color); font-weight: 800; margin: 6px 0; }
+
+        .meta-info { font-size: 18.2px; margin-bottom: 5px; }
+        .meta-line { margin-bottom: 6px; font-size: 18.2px; }
+        .meta-label { font-weight: 600; color: #4a5568; }
+
+        h2.section-title {
+            font-size: 19.5px; color: #ffffff; background-color: var(--primary-color);
+            padding: 8px 12px; border-radius: 4px; margin: 20px 0 12px 0;
+            text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;
+        }
+
+        .liturgy-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .liturgy-row { border-bottom: 1px solid var(--border-color); }
+        .liturgy-cell { padding: 12px 4px; vertical-align: top; font-size: 18.2px; }
+        .liturgy-no { width: 24px; font-weight: bold; color: var(--secondary-color); }
+        .liturgy-content { font-weight: 500; }
+        .liturgy-detail { font-size: 15.6px; color: #4a5568; margin-top: 3px; font-style: italic; }
+        .liturgy-lead { text-align: right; font-size: 16.9px; color: #4a5568; width: 120px; font-weight: 500; }
+
+        .scripture-box {
+            font-family: "Georgia", serif; font-style: italic; background-color: #f7fafc;
+            border-left: 3px solid var(--secondary-color); padding: 14px; margin: 15px 0;
+            font-size: 18.9px; line-height: 1.7;
+        }
+        .scripture-ref { font-weight: bold; font-style: normal; display: block; margin-bottom: 6px; color: var(--primary-color); }
+
+        .caugoc-box {
+            font-family: "Georgia", serif; background-color: var(--accent-bg);
+            border: 1px dashed var(--secondary-color); border-radius: 6px;
+            padding: 14px; margin: 15px 0; font-size: 18.2px; line-height: 1.7; text-align: center;
+        }
+        .caugoc-title { font-size: 16.9px; color: #744210; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 6px; display: block; }
+
+        .item-list { list-style: none; }
+        .item-list > li { position: relative; padding-left: 16px; margin-bottom: 10px; font-size: 18.9px; text-align: justify; }
+        .item-list > li::before { content: "•"; position: absolute; left: 2px; color: var(--secondary-color); font-weight: bold; font-size: 20.8px; }
+
+        .sub-list { list-style: none; margin-left: 5px; margin-top: 6px; border-left: 1px dashed var(--border-color); padding-left: 10px; }
+        .sub-list li { font-size: 17.6px; color: #2d3748; margin-bottom: 6px; line-height: 1.5; text-align: justify; }
+
+        .card { border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; margin-bottom: 14px; background-color: #fff; }
+        .info-block { margin-bottom: 15px; }
+        .info-block:last-child { margin-bottom: 0; }
+        .info-title { font-weight: bold; font-size: 18.9px; color: var(--primary-color); margin-bottom: 6px; }
+        .info-text { font-size: 18.2px; color: #2d3748; padding-left: 8px; font-weight: 500; }
+
+        .footer-nav {
+            position: fixed; bottom: 0; left: 0; right: 0; background-color: #ffffff;
+            border-top: 1px solid var(--border-color); display: flex; justify-content: space-around;
+            max-width: 480px; margin: 0 auto; z-index: 100; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+        .footer-btn { flex: 1; text-align: center; padding: 10px 0; font-size: 14.3px; color: #718096; text-decoration: none; font-weight: 500; }
+        .footer-btn.active { color: var(--primary-color); font-weight: bold; }
+        .footer-btn-icon { font-size: 23.4px; display: block; margin-bottom: 2px; }
+
+        .doc-id-bottom {
+            text-align: center; font-size: 15.6px; color: #a0aec0; font-weight: bold;
+            margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border-color);
+        }
+        .loading-msg { text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 16px; }
+
+        .edit-toolbar {
+            position: fixed;
+            bottom: 78px;
+            right: 14px;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .edit-toolbar button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        #editBtn { background-color: var(--primary-color); color: #fff; }
+        #editBtn.editing { background-color: #e53e3e; }
+        #saveBtn { background-color: var(--secondary-color); color: #1a365d; }
+
+        .page-section[contenteditable="true"] {
+            outline: 2px dashed var(--secondary-color);
+            outline-offset: 4px;
+        }
+        .page-section[contenteditable="true"] *:hover {
+            background-color: #fffbea;
+            cursor: text;
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-container">
+    <div class="nav-tabs" id="topNav">
+        <a href="#" class="nav-tab active" onclick="switchPage(0)">Trang Chủ</a>
+        <a href="#" class="nav-tab" onclick="switchPage(1)">Chương Trình</a>
+        <a href="#" class="nav-tab" onclick="switchPage(2)">Thông Báo</a>
+        <a href="#" class="nav-tab" onclick="switchPage(3)">Chi phái và Ban</a>
+        <a href="#" class="nav-tab" onclick="switchPage(4)">Cảm tạ & Cầu thay</a>
+    </div>
+
+    <!-- PAGE 0: TRANG CHỦ - render từ chuongtrinh.csv (Loai=ThongTin) -->
+    <div class="page-section active" id="page0">
+        <div id="page0-content" class="loading-msg">Đang tải dữ liệu...</div>
+    </div>
+
+    <!-- PAGE 1: CHƯƠNG TRÌNH - render từ chuongtrinh.csv (Loai=TietMuc) -->
+    <div class="page-section" id="page1">
+        <h2 class="section-title">Chương Trình Thờ Phượng</h2>
+        <table class="liturgy-table" id="liturgy-table-body">
+            <tr><td class="liturgy-cell loading-msg">Đang tải dữ liệu...</td></tr>
+        </table>
+    </div>
+
+    <!-- PAGE 2: THÔNG BÁO - render từ thongtin.csv (Trang=ThongBao) -->
+    <div class="page-section" id="page2">
+        <div id="page2-content" class="loading-msg">Đang tải dữ liệu...</div>
+    </div>
+
+    <!-- PAGE 3: CHI PHÁI VÀ BAN - render từ thongtin.csv (Trang=ChiPhaiBan) -->
+    <div class="page-section" id="page3">
+        <div id="page3-content" class="loading-msg">Đang tải dữ liệu...</div>
+    </div>
+
+    <!-- PAGE 4: CẢM TẠ & CẦU THAY - Cảm Tạ (CSV) + Cầu Thay (tĩnh, cố định) + Cầu Nguyện Đặc Biệt (3 mục đầu tĩnh + CSV) -->
+    <div class="page-section" id="page4">
+        <h2 class="section-title">Cảm Tạ</h2>
+        <div class="card" style="border-left: 4px solid #48bb78; background-color: #f6fedb;">
+            <ul class="item-list" id="camta-list">
+                <li class="loading-msg">Đang tải dữ liệu...</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Cầu Thay</h2>
+        <div class="card">
+            <!-- CỐ ĐỊNH: mục này không đổi hàng tuần. Khi cần điều chỉnh, sửa trực tiếp tại đây. -->
+            <ul class="item-list">
+                <li><strong>1.</strong> Đức Thánh Linh thăm viếng và phấn hưng Hội Thánh, khiến Hội Thánh làm vinh hiển Đức Chúa Trời, phát triển mạnh mẽ cả chiều rộng lẫn chiều sâu.</li>
+                <li><strong>2.</strong> Mục sư Quản nhiệm và Bà được đầy ơn Chúa để hầu việc Chúa với Hội Thánh cũng như công tác được giao của Ban Đại diện. Gia đình tôi tớ Chúa được bình an, phước hạnh.</li>
+                <li><strong>3.</strong> Ban Chấp sự, Ban Điều hành các Chí phái, các Ban ngành, các nhân sự trong Hội Thánh đầy ơn Chúa, chu toàn công tác được giao cách kết quả và phước hạnh.</li>
+                <li><strong>4.</strong> Các tân tín hữu đứng vững và tăng trưởng trong đức tin, trung tín sinh hoạt với Hội Thánh, tham gia lớp giáo lý để nhận báp-têm và làm chứng về Chúa cho những người khác.</li>
+                <li><strong>5. Cầu Nguyện cho các tín hữu cao tuổi:</strong><br>
+                    <span style="font-size:17.6px; color:#4a5568; display:block; margin:2px 0 6px 0;">Những tín hữu cao tuổi được bình an, mạnh khoẻ, trung tín, làm gương cho con cháu trong đời sống đức tin.</span>
+                    <ul class="sub-list">
+                        <li><strong>Chi Phái 1:</strong> ông bà Mục sư Trí sự Nguyễn Thanh Lâm, cụ bà Nguyễn Thị Phượng, cụ bà Ngô Thị Lợi, cụ bà Đỗ Thị Thử, bà Nguyễn Thị Tranh, bà Nguyễn Thị Liên, ông bà Đỗ Viết Khuyến.</li>
+                        <li><strong>Chi Phái 2:</strong> quả phụ Lê Xuân Quý, ông bà Trần Văn Diễn, ông bà Vũ Ngọc Hùng, cụ Đoàn Giàu, cụ bà Nguyễn Thị Phú, ông bà Nguyễn Năng Sùng, ông Châu Tập.</li>
+                        <li><strong>Chi Phái 3:</strong> ông bà cụ Huỳnh Kim Ngũ, bà Phạm Thị Quế.</li>
+                        <li><strong>Chi Phái 4:</strong> QPMS. Phan Phụng Phục, quả phụ Nguyễn Đình Hoè, quả phụ Nguyễn Đình Lang, quả phụ Nguyễn Đình Gia, ông bà Nguyễn Đình Lập.</li>
+                        <li><strong>Chi Phái 5:</strong> ông bà Thân Đăng Tấn, bà Phạm Thị Bốn, ông Đỗ Hữu Viễn.</li>
+                        <li><strong>Chi Phái 6:</strong> quả phụ Võ Đức Bố, bà Nguyễn Thị Khoa, ông bà Nguyễn Phước Ấm, ông Phan Minh Dư, ông Trương Văn Quang, bà Nguyễn Thị Liên.</li>
+                        <li><strong>Chi Phái 7:</strong> quả phụ Nguyễn Đức Sang.</li>
+                        <li><strong>Chi Phái 8:</strong> quả phụ Ông Văn Khôi, quả phụ Lê Ngọc Hoà.</li>
+                        <li><strong>Chưa tham gia sinh hoạt chi phái:</strong> cụ bà Nguyễn Thị Ngọc (84 tuổi).</li>
+                    </ul>
+                </li>
+                <li><strong>6. Cầu Nguyện cho các thai phụ trong Hội Thánh:</strong><br>
+                    <span style="font-size:17.6px; color:#4a5568; display:block; margin:2px 0 6px 0;">Được bình an, phước hạnh trong thai kỳ, am hiểu và thực hành thai giáo.</span>
+                    <ul class="sub-list">
+                        <li>• Cô Diệp Hoàng Uyên Phương (Chi Phái 1)</li>
+                        <li>• Cô Tán Ngọc Thúy Phượng (Chi Phái 4)</li>
+                        <li>• Cô Nguyễn Thị Minh Thủy (Chi Phái 4)</li>
+                        <li>• Cô Nguyễn Thị Yên (Chi Phái 5)</li>
+                        <li>• Cô Phan Nguyễn Quỳnh Như (Chi Phái 5)</li>
+                        <li>• Cô Phạm Thị Thanh Tuyền (Chi Phái 7)</li>
+                        <li>• Cô Hannah Alfred (tín hữu quốc tế)</li>
+                    </ul>
+                </li>
+                <li><strong>7. Cầu Nguyện cho các cháu nhỏ có nan đề về sức khỏe:</strong><br>
+                    <span style="font-size:17.6px; color:#4a5568; display:block; margin:2px 0 6px 0;">Xin cầu thay cho các cháu bình an, sức khỏe cải thiện, cha mẹ các cháu được Chúa thêm ơn để chăm sóc các cháu:</span>
+                    <ul class="sub-list">
+                        <li>• Cháu Đình Minh Triết (Chi phái 1)</li>
+                        <li>• Cháu Đoàn Văn Thiên Phước (Chi Phái 5)</li>
+                        <li>• Cháu Đồng Thanh Hoàng Lộc (Chi Phái 5)</li>
+                        <li>• Cháu Huỳnh Ngọc Thiên Kim (Chi Phái 6)</li>
+                        <li>• Cháu Nguyễn Ngọc Bình An (Chi Phái 7)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Cầu Nguyện Đặc Biệt</h2>
+        <div class="card" style="border-left: 4px solid #e53e3e;">
+            <ul class="item-list" id="caunguyendacbiet-list">
+                <!-- CỐ ĐỊNH: 3 mục đầu không đổi hàng tuần. Khi cần điều chỉnh, sửa trực tiếp tại đây. -->
+                <li><strong>1. Mở Điểm nhóm:</strong> Xin Chúa ban ơn, hướng dẫn Hội Thánh trong việc mở các điểm nhóm mới. Cầu nguyện xin Chúa chọn địa điểm, thêm ơn trên công tác nhân sự, chuẩn bị tài lực.</li>
+                <li><strong>2. Mở rộng cơ sở nhà Chúa:</strong> Hội Thánh sớm mua được phần đất liền kề nhà thờ để mở rộng cơ sở nhà Chúa, nhằm đáp ứng nhu cầu sinh hoạt của Hội Thánh.</li>
+                <li><strong>3. Trường Chúa Nhật:</strong> Xin Chúa cho Trường Chúa Nhật có 200 học viên tham gia học thường xuyên.</li>
+                <!-- Các mục 4-7 dưới đây được chèn tự động từ thongtin.csv -->
+                <li class="loading-msg">Đang tải dữ liệu...</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="edit-toolbar" id="editToolbar">
+        <button id="editBtn" onclick="toggleEdit()">✏️ Edit</button>
+        <button id="saveBtn" onclick="saveCleanFile()">💾 Lưu file sạch</button>
+    </div>
+
+    <div class="footer-nav">
+        <a href="#" class="footer-btn active" id="fBtn0" onclick="switchPage(0)"><span class="footer-btn-icon">🏠</span>Trang Chủ</a>
+        <a href="#" class="footer-btn" id="fBtn1" onclick="switchPage(1)"><span class="footer-btn-icon">⛪</span>Chương Trình</a>
+        <a href="#" class="footer-btn" id="fBtn2" onclick="switchPage(2)"><span class="footer-btn-icon">📢</span>Thông Báo</a>
+        <a href="#" class="footer-btn" id="fBtn3" onclick="switchPage(3)"><span class="footer-btn-icon">📅</span>Chi phái/Ban</a>
+        <a href="#" class="footer-btn" id="fBtn4" onclick="switchPage(4)"><span class="footer-btn-icon">🙏</span>Cảm tạ/Cầu thay</a>
+    </div>
+</div>
+
+<script id="papaparse-script" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script id="core-script">
+    function switchPage(pageIndex) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+        document.getElementById('page' + pageIndex).classList.add('active');
+        document.querySelectorAll('.nav-tab').forEach((t, idx) => t.classList.toggle('active', idx === pageIndex));
+        document.querySelectorAll('.footer-nav .footer-btn').forEach((b, idx) => b.classList.toggle('active', idx === pageIndex));
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function esc(s) { return (s || ''); }
+
+    // ================= chuongtrinh.csv =================
+    function renderChuongTrinhCsv(rows) {
+        // ---- Trang Chủ (Loai = ThongTin) ----
+        const map = {};
+        rows.filter(r => r.Loai === 'ThongTin').forEach(r => { map[r.Truong.trim()] = (r.GiaTri || '').trim(); });
+
+        const homeHtml = `
+            <div class="header-main">
+                <div class="church-title">Hội Thánh Tin Lành Việt Nam</div>
+                <div class="church-subtitle">CHI HỘI HÒA MỸ</div>
+                <div class="church-address">246 Tôn Đức Thắng, TP. Đà Nẵng</div>
+                <h1 class="title">CHƯƠNG TRÌNH THỜ PHƯỢNG</h1>
+                <div class="subtitle">${esc(map.NgayThang)}</div>
+            </div>
+
+            <div class="theme-box">
+                <div class="theme-title">Chủ đề</div>
+                <div class="theme-name">${esc(map.ChuDe)}</div>
+                <div class="meta-line" style="font-style: italic; font-size: 18.2px; color: #4a5568;">Kinh Thánh: ${esc(map.KinhThanhChuDe)}</div>
+            </div>
+
+            <div class="card">
+                <div class="meta-info">
+                    <div class="meta-line"><span class="meta-label">Giảng luận:</span> ${esc(map.GiangLuan)}</div>
+                    <div class="meta-line"><span class="meta-label">Hướng dẫn chương trình:</span> ${esc(map.HDCT)}</div>
+                </div>
+            </div>
+
+            <div class="scripture-box">
+                <span class="scripture-ref">${esc(map.KinhThanhTrichDanTieuDe)}</span>
+                "${esc(map.NoiDungTrichDan)}"
+            </div>
+
+            <div class="caugoc-box">
+                <span class="caugoc-title">Câu Gốc</span>
+                "${esc(map.CauGoc)}"
+            </div>
+
+            <div class="doc-id-bottom">Bản chương trình số: ${esc(map.SoBaoDanh)}</div>
+        `;
+        document.getElementById('page0-content').outerHTML = `<div id="page0-content">${homeHtml}</div>`;
+
+        // ---- Chương Trình thờ phượng (Loai = TietMuc) ----
+        const rowsHtml = rows.filter(r => r.Loai === 'TietMuc' && r.STT).map(r => {
+            const chiTietHtml = (r.ChiTiet || '')
+                .split('|').map(s => s.trim()).filter(Boolean)
+                .map(s => `<div class="liturgy-detail">${s}</div>`).join('');
+            return `
+                <tr class="liturgy-row">
+                    <td class="liturgy-cell liturgy-no">${r.STT}</td>
+                    <td class="liturgy-cell liturgy-content">${esc(r.NoiDung)}${chiTietHtml}</td>
+                    <td class="liturgy-cell liturgy-lead">${esc(r.NguoiPhuTrach).replace(/\n/g, '<br>')}</td>
+                </tr>
+            `;
+        }).join('');
+        document.getElementById('liturgy-table-body').innerHTML = rowsHtml;
+    }
+
+    // ================= thongtin.csv =================
+    function groupByMuc(rows, trang) {
+        const groups = [];
+        const index = {};
+        rows.filter(r => r.Trang === trang).forEach(r => {
+            if (!(r.Muc in index)) { index[r.Muc] = { muc: r.Muc, tieuDe: r.TieuDeMuc, rows: [] }; groups.push(index[r.Muc]); }
+            index[r.Muc].rows.push(r);
+            if (r.TieuDeMuc) index[r.Muc].tieuDe = r.TieuDeMuc;
+        });
+        groups.forEach(g => g.rows.sort((a, b) => (parseFloat(a.STT) || 0) - (parseFloat(b.STT) || 0)));
+        return groups;
+    }
+    function findVal(rows, nhan) {
+        const row = rows.find(r => r.Nhan === nhan);
+        return row ? row.NoiDung : '';
+    }
+
+    // ---- Thông Báo ----
+    function renderThongBao(rows) {
+        const groups = groupByMuc(rows, 'ThongBao');
+        let html = '';
+        groups.forEach(g => {
+            if (g.muc === 'TruyenGiang') {
+                html += `
+                    <h2 class="section-title">Thông Báo Truyền Giảng</h2>
+                    <div class="theme-box" style="background-color: #fffaf0; border-color: #ed8936;">
+                        <div class="theme-title" style="color: #dd6b20;">${esc(findVal(g.rows,'ThangNam'))}</div>
+                        <div class="theme-name" style="font-size: 24.7px;">${esc(findVal(g.rows,'ChuDe'))}</div>
+                        <div style="font-size: 18.9px; text-align: left; margin-top: 10px; line-height: 1.6;">
+                            <p><strong>• Thời gian:</strong> ${esc(findVal(g.rows,'ThoiGian'))}</p>
+                            <p><strong>• Kinh Thánh:</strong> ${esc(findVal(g.rows,'KinhThanh'))}</p>
+                            <p><strong>• Diễn giả:</strong> ${esc(findVal(g.rows,'DienGia'))}</p>
+                            <p><strong>• HDCT:</strong> ${esc(findVal(g.rows,'HDCT'))}</p>
+                        </div>
+                        <p style="font-size: 17.6px; margin-top: 10px; font-style: italic; color: #4a5568; font-weight: 500;">
+                            ${esc(findVal(g.rows,'GhiChu'))}
+                        </p>
+                    </div>
+                `;
+            } else {
+                // Áp dụng cho Cơ Đốc Giáo Dục và bất kỳ Ban ngành mới nào (Ban_...)
+                const infoBlocks = g.rows.map(r => {
+                    const lines = (r.NoiDung || '').split('|').map(s => s.trim()).filter(Boolean);
+                    const content = lines.length > 1
+                        ? `<ul class="item-list">${lines.map(l => `<li>${l}</li>`).join('')}</ul>`
+                        : `<p class="info-text">${esc(lines[0])}</p>`;
+                    return `
+                        <div class="info-block">
+                            <div class="info-title">${esc(r.Nhan)}</div>
+                            ${content}
+                        </div>
+                    `;
+                }).join('');
+                html += `
+                    <h2 class="section-title">${esc(g.tieuDe)}</h2>
+                    <div class="card">${infoBlocks}</div>
+                `;
+            }
+        });
+        document.getElementById('page2-content').innerHTML = html;
+    }
+
+    // ---- Chi phái và Ban ----
+    function renderChiPhaiBan(rows) {
+        const groups = groupByMuc(rows, 'ChiPhaiBan');
+        let html = '';
+        groups.forEach(g => {
+            if (g.muc === 'SinhHoatChiPhai') {
+                const ghiChu = findVal(g.rows, '_GhiChu');
+                const cps = g.rows.filter(r => r.Nhan && r.Nhan.startsWith('CP'));
+                let tableRows = '';
+                for (let i = 0; i < 4; i++) {
+                    const a = cps[i], b = cps[i + 4];
+                    tableRows += `<tr>
+                        <td style="padding: 4px 0; width: 50%;"><strong>${a ? a.Nhan : ''}:</strong> ${a ? esc(a.NoiDung) : ''}</td>
+                        <td style="padding: 4px 0; width: 50%;"><strong>${b ? b.Nhan : ''}:</strong> ${b ? esc(b.NoiDung) : ''}</td>
+                    </tr>`;
+                }
+                html += `
+                    <h2 class="section-title">${esc(g.tieuDe)}</h2>
+                    <div class="card">
+                        <p style="font-size: 17.6px; font-style: italic; color: #4a5568; margin-bottom: 10px; font-weight: 500;">${esc(ghiChu)}</p>
+                        <table style="width: 100%; font-size: 18.2px; border-collapse: collapse; line-height: 1.8;">${tableRows}</table>
+                    </div>
+                `;
+            } else if (g.muc === 'LichThuongKy') {
+                const items = g.rows.filter(r => r.Nhan && !r.Nhan.startsWith('_'))
+                    .map(r => `<li><strong>${esc(r.Nhan)}:</strong> ${esc(r.NoiDung)}</li>`).join('');
+                html += `
+                    <h2 class="section-title">Lịch Sinh Hoạt Thường Kỳ</h2>
+                    <div class="card">
+                        <div class="info-title" style="border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin-bottom: 8px;">${esc(g.tieuDe)}</div>
+                        <ul class="item-list">${items}</ul>
+                    </div>
+                `;
+            } else if (g.muc === 'CacBan') {
+                const items = g.rows.filter(r => r.Nhan && !r.Nhan.startsWith('_'))
+                    .map(r => `<li><strong>${esc(r.Nhan)}:</strong> ${esc(r.NoiDung)}</li>`).join('');
+                const ghiChu = findVal(g.rows, '_GhiChu');
+                html += `
+                    <div class="card">
+                        <div class="info-title" style="border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin-bottom: 8px;">${esc(g.tieuDe)}</div>
+                        <ul class="item-list">${items}</ul>
+                        <p style="font-size: 14.3px; color: #718096; margin-top: 10px; font-style: italic; border-top: 1px solid var(--border-color); padding-top: 6px;">${esc(ghiChu)}</p>
+                    </div>
+                `;
+            }
+        });
+        document.getElementById('page3-content').innerHTML = html;
+    }
+
+    // ---- Cảm Tạ (CSV) ----
+    function renderCamTa(rows) {
+        const items = rows.filter(r => r.Trang === 'CamTa').sort((a,b) => (parseFloat(a.STT)||0)-(parseFloat(b.STT)||0));
+        document.getElementById('camta-list').innerHTML = items.map(r => `<li>${esc(r.NoiDung)}</li>`).join('');
+    }
+
+    // ---- Cầu Nguyện Đặc Biệt mục 4-7 (CSV), nối vào sau 3 mục cố định ----
+    function renderCauNguyenDacBiet(rows) {
+        const items = rows.filter(r => r.Trang === 'CauNguyenDacBiet').sort((a,b) => (parseFloat(a.STT)||0)-(parseFloat(b.STT)||0));
+        const list = document.getElementById('caunguyendacbiet-list');
+        list.querySelector('.loading-msg')?.remove();
+        items.forEach(r => {
+            const subItems = (r.ChiTiet || '').split('|').map(s => s.trim()).filter(Boolean);
+            const subHtml = subItems.length
+                ? `<ul class="sub-list">${subItems.map(s => `<li>• ${s}</li>`).join('')}</ul>`
+                : '';
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${esc(r.Nhan)}</strong> ${esc(r.NoiDung)}${subHtml}`;
+            list.appendChild(li);
+        });
+    }
+
+    function loadCSV(path, callback) {
+        Papa.parse(path, {
+            download: true, header: true, skipEmptyLines: true,
+            complete: (results) => callback(results.data),
+            error: (err) => console.error('Lỗi tải ' + path, err)
+        });
+    }
+
+    // ================= Edit trực tiếp trên trang =================
+    let isEditing = false;
+    function toggleEdit() {
+        isEditing = !isEditing;
+        document.querySelectorAll('.page-section').forEach(s => s.setAttribute('contenteditable', isEditing));
+        const btn = document.getElementById('editBtn');
+        btn.textContent = isEditing ? '✅ Xong sửa' : '✏️ Edit';
+        btn.classList.toggle('editing', isEditing);
+    }
+
+    // ================= Xuất file index.html sạch (không còn nút Edit/Save, không phụ thuộc CSV) =================
+    function saveCleanFile() {
+        const clone = document.documentElement.cloneNode(true);
+
+        // Bỏ toolbar Edit/Save
+        clone.querySelector('#editToolbar')?.remove();
+
+        // Bỏ thuộc tính contenteditable còn sót lại
+        clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
+        // Bỏ script PapaParse và script tải CSV — nội dung đã được "đóng cứng" vào HTML
+        clone.querySelector('#papaparse-script')?.remove();
+        clone.querySelector('#data-loader-script')?.remove();
+
+        // Đặt lại Trang Chủ làm trang mặc định khi mở file
+        clone.querySelectorAll('.page-section').forEach((s, idx) => s.classList.toggle('active', idx === 0));
+        clone.querySelectorAll('.nav-tab').forEach((t, idx) => t.classList.toggle('active', idx === 0));
+        clone.querySelectorAll('.footer-btn').forEach((b, idx) => b.classList.toggle('active', idx === 0));
+
+        const htmlString = '<!DOCTYPE html>\n' + clone.outerHTML;
+        const blob = new Blob([htmlString], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'index.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+<script id="data-loader-script">
+    loadCSV('chuongtrinh.csv', renderChuongTrinhCsv);
+    loadCSV('thongtin.csv', (rows) => {
+        renderThongBao(rows);
+        renderChiPhaiBan(rows);
+        renderCamTa(rows);
+        renderCauNguyenDacBiet(rows);
+    });
+</script>
+
+</body>
+</html>
